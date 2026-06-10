@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientifica 2026: Open Government Data — Stadt Zürich</title>
+  <link rel="stylesheet" href="shared/style.css">
+  <style>
+    .station-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-decoration: none;
+      color: inherit;
+      padding: 2rem;
+    }
+
+    .station-card:hover, .station-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .station-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .station-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .station-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .station-meta {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .station-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .station-badge.ready {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .station-badge.todo {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .station-cta {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .station-cta::after {
+      content: '\2192';
+      transition: transform 0.15s ease;
+    }
+
+    .station-card:hover .station-cta::after {
+      transform: translateX(4px);
+    }
+
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="active" href="index.html">Übersicht</a>
+    <a href="katalog/index.html">OGD-Katalog</a>
+    <a href="starter-code/index.html">Starter Code</a>
+    <a href="mcp-abfragen/index.html">MCP-Abfragen</a>
+    <a href="anwendungen/index.html">Anwendungen</a>
+  </nav>
+
+  <header>
+    <img class="header-eye" src="shared/eth_Auge1_transparent.png" alt="">
+    <div class="header-text">
+      <h1>Scientifica 2026: Open Government Data</h1>
+      <p>Wie entsteht städtisches Wissen? Entdecken Sie, was mit offenen Daten der Stadt Zürich möglich ist.</p>
+    </div>
+    <img class="header-logo" src="shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
+  </header>
+
+  <main>
+    <div class="cards">
+
+      <a class="station-card" href="katalog/index.html">
+        <span class="station-number">1</span>
+        <h2>OGD-Katalog durchsuchen</h2>
+        <p>Über 900 Datensätze der Stadt Zürich durchsuchen, filtern und entdecken.</p>
+        <div class="station-meta">
+          <span class="station-badge ready">Fertig</span>
+          <span class="station-cta">Öffnen</span>
+        </div>
+      </a>
+
+      <a class="station-card" href="starter-code/index.html">
+        <span class="station-number">2</span>
+        <h2>Starter Code ausprobieren</h2>
+        <p>Erste Schritte mit offenen Daten — Code-Beispiele zum Anpassen und Ausführen.</p>
+        <div class="station-meta">
+          <span class="station-badge ready">Fertig</span>
+          <span class="station-cta">Öffnen</span>
+        </div>
+      </a>
+
+      <a class="station-card" href="mcp-abfragen/index.html">
+        <span class="station-number">3</span>
+        <h2>Datenabfragen via MCP</h2>
+        <p>Fragen an städtische Daten stellen — in natürlicher Sprache, mit Antworten aus dem MCP-Server.</p>
+        <div class="station-meta">
+          <span class="station-badge ready">Fertig</span>
+          <span class="station-cta">Öffnen</span>
+        </div>
+      </a>
+
+      <a class="station-card" href="anwendungen/index.html">
+        <span class="station-number">4</span>
+        <h2>Existierende Anwendungen</h2>
+        <p>Sechs Anwendungen, die auf offenen Verwaltungsdaten basieren — von Kirschblüten-Karten bis Mietpreis-Vergleichen.</p>
+        <div class="station-meta">
+          <span class="station-badge ready">Fertig</span>
+          <span class="station-cta">Öffnen</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Statistik Stadt Zürich — Scientifica 2026</p>
+  </footer>
+
+</body>
+</html>

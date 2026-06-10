@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientifica 2026: OGD-Katalog</title>
+  <link rel="stylesheet" href="../shared/style.css">
+  <style>
+    .intro {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-text {
+      flex: 1;
+    }
+
+    .intro-text h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-image {
+      width: 360px;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: 2px solid transparent;
+    }
+
+    .category-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+      border-color: var(--accent);
+    }
+
+    .category-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .category-body {
+      padding: 0.75rem 1rem;
+    }
+
+    .category-body strong {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .category-body span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.15rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .feature span {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .try-cta {
+      background: var(--blue);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .try-cta h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .try-cta p {
+      font-size: 1rem;
+      opacity: 0.88;
+      margin-bottom: 1rem;
+    }
+
+    .try-cta a {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease;
+    }
+
+    .try-cta a:hover {
+      transform: scale(1.03);
+    }
+
+    .steps {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 2.5rem;
+    }
+
+    .steps h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .steps ol {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text-light);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .steps li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .steps li a:hover {
+      text-decoration: underline;
+    }
+
+    .formats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .format-tag {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+    }
+
+    .info-note {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .info-note a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Übersicht</a>
+    <a class="active" href="../katalog/index.html">OGD-Katalog</a>
+    <a href="../starter-code/index.html">Starter Code</a>
+    <a href="../mcp-abfragen/index.html">MCP-Abfragen</a>
+    <a href="../anwendungen/index.html">Anwendungen</a>
+  </nav>
+
+  <header>
+    <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
+    <div class="header-text">
+      <h1>Scientifica 2026: OGD-Katalog</h1>
+      <p>Die Stadt Zürich stellt offene Verwaltungsdaten kostenlos, maschinenlesbar und ohne Nutzungseinschränkungen im Open-Data-Katalog zur Verfügung.</p>
+    </div>
+    <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
+  </header>
+
+  <main>
+
+    <div class="intro">
+      <div class="intro-text">
+        <h2>Was ist Open Government Data?</h2>
+        <p>Open Government Data (OGD) sind Verwaltungsdaten, die von der Stadt Zürich der Öffentlichkeit frei zugänglich gemacht werden. Die Daten können von allen — Bürger*innen, Unternehmen, Forschenden, Medien — kostenlos und ohne Einschränkungen genutzt werden.</p>
+        <p>Im Open-Data-Katalog finden Sie die offenen Daten der Stadt Zürich. Der Datenbestand wird laufend erweitert und auf aktuellem Stand gehalten. Die Daten werden detailliert mit Metadaten beschrieben und in unterschiedlichen offenen und häufig verwendeten Datenformaten angeboten.</p>
+      </div>
+      <img class="intro-image" src="https://data.stadt-zuerich.ch/zh.png" alt="Open Data Zürich">
+    </div>
+
+    <h2 class="section-title">Über 1'000 Datensätze in vielen Kategorien</h2>
+
+    <div class="categories">
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/umwelt" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/Modules/ogd_bspe/group_pics/kategorien-17.png" alt="Umwelt">
+        <div class="category-body">
+          <strong>Umwelt</strong>
+          <span>276 Datensätze</span>
+        </div>
+      </a>
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/bevolkerung" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/modules/ogd_bspe/group_pics/kategorien-04.png" alt="Bevölkerung">
+        <div class="category-body">
+          <strong>Bevölkerung</strong>
+          <span>222 Datensätze</span>
+        </div>
+      </a>
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/bauen-und-wohnen" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/modules/ogd_bspe/group_pics/kategorien-03.png" alt="Bauen und Wohnen">
+        <div class="category-body">
+          <strong>Bauen und Wohnen</strong>
+          <span>194 Datensätze</span>
+        </div>
+      </a>
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/verwaltung" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/Modules/ogd_bspe/group_pics/kategorien-18.png" alt="Verwaltung">
+        <div class="category-body">
+          <strong>Verwaltung</strong>
+          <span>132 Datensätze</span>
+        </div>
+      </a>
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/basiskarten" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/Modules/ogd_bspe/group_pics/kategorien-02.png" alt="Basiskarten">
+        <div class="category-body">
+          <strong>Basiskarten</strong>
+          <span>134 Datensätze</span>
+        </div>
+      </a>
+      <a class="category-card" href="https://data.stadt-zuerich.ch/group/mobilitat" target="_blank" rel="noopener">
+        <img class="category-img" src="https://statistik.stadt-zuerich.ch/Modules/ogd_bspe/group_pics/kategorien-12.png" alt="Mobilität">
+        <div class="category-body">
+          <strong>Mobilität</strong>
+          <span>122 Datensätze</span>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">So finden Sie Daten</h2>
+
+    <div class="steps">
+      <h3>In 3 Schritten zum Datensatz</h3>
+      <ol>
+        <li><strong>Katalog öffnen</strong> — Gehen Sie zu <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a> und nutzen Sie die Suchfunktion oder stöbern Sie in den Kategorien.</li>
+        <li><strong>Datensatz auswählen</strong> — Jeder Datensatz ist mit Metadaten beschrieben: Titel, Beschreibung, Publisher, Tags, Aktualisierungsintervall und Lizenz.</li>
+        <li><strong>Daten nutzen</strong> — Laden Sie die Ressource im gewünschten Format herunter oder nutzen Sie die API für den direkten Zugriff.</li>
+      </ol>
+    </div>
+
+    <div class="try-cta">
+      <h2>Jetzt den Katalog durchsuchen</h2>
+      <p>Der Datenkatalog ist Ihr zentraler Einstiegspunkt zur Suche und Nutzung von offenen Daten der Stadt Zürich.</p>
+      <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch öffnen</a>
+    </div>
+
+    <h2 class="section-title">Merkmale des Katalogs</h2>
+
+    <div class="features">
+      <div class="feature">
+        <strong>Kostenlos</strong>
+        <span>Alle Daten stehen gratis zur Verfügung — für kommerzielle und nicht-kommerzielle Nutzung.</span>
+      </div>
+      <div class="feature">
+        <strong>Maschinenlesbar</strong>
+        <span>Daten in offenen, standardisierten Formaten für die direkte Weiterverarbeitung.</span>
+      </div>
+      <div class="feature">
+        <strong>Ohne Nutzungseinschränkungen</strong>
+        <span>Alle Datensätze unter offener Lizenz — frei nutzbar, teilbar und weiterverarbeitbar.</span>
+      </div>
+      <div class="feature">
+        <strong>Laufend aktualisiert</strong>
+        <span>Der Datenbestand wird laufend erweitert und auf aktuellem Stand gehalten.</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">Verfügbare Datenformate</h2>
+
+    <div class="formats">
+      <span class="format-tag">CSV</span>
+      <span class="format-tag">JSON</span>
+      <span class="format-tag">GeoJSON</span>
+      <span class="format-tag">Parquet</span>
+      <span class="format-tag">XML</span>
+      <span class="format-tag">RDF</span>
+      <span class="format-tag">GPKG</span>
+      <span class="format-tag">SHP</span>
+      <span class="format-tag">WFS</span>
+      <span class="format-tag">WMS</span>
+    </div>
+
+    <div class="info-note">
+      Weitere Informationen zu Open Data, Anwendungsbeispiele und gesetzliche Rahmenbedingungen finden Sie auf <a href="https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/open-government-data.html" target="_blank" rel="noopener">stadt-zuerich.ch</a>.
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Statistik Stadt Zürich — Open Government Data
+      <br>
+      <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a>
+    </p>
+  </footer>
+
+  <div class="reset-overlay" id="resetOverlay">
+    <h2>Willkommen!</h2>
+    <p>Berühren Sie den Bildschirm, um zu starten.</p>
+  </div>
+
+  <script src="../shared/kiosk.js"></script>
+</body>
+</html>

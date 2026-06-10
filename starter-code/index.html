@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientifica 2026: Starter Code</title>
+  <link rel="stylesheet" href="../shared/style.css">
+  <style>
+    .hero-video {
+      float: left;
+      width: 400px;
+      margin: 0 2rem 1.5rem 0;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .intro-text h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .benefit {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .benefit span {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .steps {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 2.5rem;
+    }
+
+    .steps h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .steps ol {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text-light);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .steps li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .steps li a:hover {
+      text-decoration: underline;
+    }
+
+    .try-cta {
+      background: var(--blue);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .try-cta h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .try-cta p {
+      font-size: 1rem;
+      opacity: 0.88;
+      margin-bottom: 1rem;
+    }
+
+    .try-cta a {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease;
+    }
+
+    .try-cta a:hover {
+      transform: scale(1.03);
+    }
+
+    .notebook-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .notebook-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--accent);
+    }
+
+    .notebook-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .notebook-card ol {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .notebook-card li {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.55;
+      margin-bottom: 0.3rem;
+    }
+
+    .audience {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .audience-item {
+      background: var(--blue-light);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-align: center;
+    }
+
+    .tech-note {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .tech-note a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .tech-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Übersicht</a>
+    <a href="../katalog/index.html">OGD-Katalog</a>
+    <a class="active" href="../starter-code/index.html">Starter Code</a>
+    <a href="../mcp-abfragen/index.html">MCP-Abfragen</a>
+    <a href="../anwendungen/index.html">Anwendungen</a>
+  </nav>
+
+  <header>
+    <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
+    <div class="header-text">
+      <h1>Scientifica 2026: Starter Code</h1>
+      <p>Vom Datenkatalog direkt ins Notebook — ohne Installation, ohne Setup. Ein Browser genügt.</p>
+    </div>
+    <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
+  </header>
+
+  <main>
+
+    <div class="clearfix">
+      <video class="hero-video" autoplay loop muted playsinline controls>
+        <source src="../shared/starterCode.mp4" type="video/mp4">
+      </video>
+      <div class="intro-text">
+        <h2>Was ist Starter Code?</h2>
+        <p>Der Open-Data-Katalog der Stadt Zürich bietet eine neue Funktion: <strong>Starter Code</strong>. Mit einem einzigen Klick öffnen Sie zu jedem tabellarischen (CSV) oder geografischen (GeoJSON) Datensatz eine fix fertige Analyseumgebung in der Cloud — inklusive vorbereiteter Code-Bausteine in Python oder R.</p>
+        <p>Der Weg vom Datenkatalog zur ersten Analyse ist so kurz wie nie — ohne technische Hürden, direkt im Browser.</p>
+
+        <div class="benefits">
+      <div class="benefit">
+        <strong>Kein Setup nötig</strong>
+        <span>Kein Python, kein R, keine Packages lokal installieren. Alles läuft in der Cloud.</span>
+      </div>
+      <div class="benefit">
+        <strong>Sofortiger Einstieg</strong>
+        <span>Der Starter Code übernimmt die typischen ersten Schritte. Sie konzentrieren sich auf die Analyse.</span>
+      </div>
+      <div class="benefit">
+        <strong>Für alle zugänglich</strong>
+        <span>Ob Data Scientist, Journalistin, Studierende oder interessierte Bürgerin.</span>
+      </div>
+      <div class="benefit">
+        <strong>Reproduzierbar</strong>
+        <span>Jede Session ist nachvollziehbar und teilbar. Ergebnisse lassen sich weitergeben.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <h2 class="section-title">So funktioniert es</h2>
+
+    <div class="steps">
+      <h3>In 4 Schritten zur Analyse</h3>
+      <ol>
+        <li><strong>Datensatz im Katalog öffnen</strong> — Navigieren Sie zu einem beliebigen Datensatz auf <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a>.</li>
+        <li><strong>Ressource auswählen</strong> — Klicken Sie auf die gewünschte Ressource (CSV oder GeoJSON).</li>
+        <li><strong>Starter Code starten</strong> — Auf der Ressourcen-Seite finden Sie das Renku-Logo — jeweils einmal für Python und einmal für R. Ein Klick öffnet eine vorkonfigurierte Session auf RenkuLab.io.</li>
+        <li><strong>Loslegen</strong> — Die Session enthält bereits ein Notebook mit dem gewählten Datensatz. Sie wählen, ob Sie in Python oder R arbeiten möchten.</li>
+      </ol>
+    </div>
+
+    <div class="try-cta">
+      <h2>Jetzt selber ausprobieren</h2>
+      <p>Öffnen Sie den Datenkatalog, wählen Sie einen Datensatz und klicken Sie auf das Renku-Logo.</p>
+      <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch öffnen</a>
+    </div>
+
+    <h2 class="section-title">Was ist im Notebook enthalten?</h2>
+
+    <div class="notebook-content">
+      <div class="notebook-card">
+        <h3>Python (Jupyter / pandas)</h3>
+        <ol>
+          <li>Metadaten und Beschreibung des Datensatzes</li>
+          <li>Daten laden (CSV via pandas, GeoJSON via geopandas)</li>
+          <li>Leere Spalten automatisch entfernen</li>
+          <li>Überblick: Zeilen, Spalten, Duplikate, Stichprobe</li>
+          <li>Deskriptive Statistik (kategorial + numerisch)</li>
+          <li>Fehlende Werte visualisieren (missingno)</li>
+          <li>Histogramme für numerische Variablen</li>
+          <li>Freier Bereich zum Weiterarbeiten</li>
+        </ol>
+      </div>
+      <div class="notebook-card">
+        <h3>R (R Markdown)</h3>
+        <ol>
+          <li>Metadaten und Beschreibung des Datensatzes</li>
+          <li>Packages laden (skimr, tidyverse)</li>
+          <li>Daten laden (CSV via readr, Parquet via arrow)</li>
+          <li>Erste Zeilen anzeigen (head)</li>
+          <li>Struktur-Übersicht (glimpse)</li>
+          <li>Ausführliche Zusammenfassung (skim)</li>
+          <li>Freier Bereich zum Weiterarbeiten</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2 class="section-title">Für wen ist es gedacht?</h2>
+
+    <div class="audience">
+      <div class="audience-item">Data Scientists</div>
+      <div class="audience-item">Journalist*innen</div>
+      <div class="audience-item">Studierende</div>
+      <div class="audience-item">Interessierte Bürger*innen</div>
+    </div>
+
+    <h2 class="section-title">Technischer Hintergrund</h2>
+
+    <div class="tech-note">
+      Starter Code nutzt <a href="https://renkulab.io" target="_blank" rel="noopener">RenkuLab.io</a>, eine Open-Source-Plattform für reproduzierbare Datenanalyse, betrieben von der ETH Zürich / SDSC. Das zugrunde liegende <a href="https://github.com/opendatazurich/starter-code" target="_blank" rel="noopener">GitHub-Repository</a> enthält über 2'300 automatisch generierte Notebooks — je eines in Python und R für jeden der rund 1'170 unterstützten Datensätze. Aufbauend auf dem Starter Code des Statistischen Amts des Kantons Zürich wurde die Lösung u.a. um direkte Katalog-Verlinkung, Geodaten-Support und Parquet-Formate erweitert.
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Statistik Stadt Zürich — Open Government Data
+      <br>
+      <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a>
+    </p>
+  </footer>
+
+  <div class="reset-overlay" id="resetOverlay">
+    <h2>Willkommen!</h2>
+    <p>Berühren Sie den Bildschirm, um zu starten.</p>
+  </div>
+
+  <script src="../shared/kiosk.js"></script>
+</body>
+</html>

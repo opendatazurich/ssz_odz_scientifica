@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientifica 2026: Datenabfragen via MCP</title>
+  <link rel="stylesheet" href="../shared/style.css">
+  <style>
+    .intro {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-text {
+      flex: 1;
+    }
+
+    .intro-text h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .intro-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-image {
+      width: 320px;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .benefit {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .benefit span {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    .servers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .server-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--accent);
+    }
+
+    .server-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .server-card p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .server-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .server-link {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .server-link:hover {
+      text-decoration: underline;
+    }
+
+    .examples-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .example-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .example-group h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--blue);
+    }
+
+    .example-queries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .example-query {
+      background: var(--card-bg);
+      border: 1px solid #e0e0e0;
+      border-radius: 24px;
+      padding: 0.5rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.4;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+      position: relative;
+    }
+
+    .example-query:hover {
+      border-color: var(--accent);
+      background: var(--blue-light);
+    }
+
+    .example-query.copied {
+      border-color: #2e7d32;
+      background: #e8f5e9;
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #333;
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+      z-index: 500;
+    }
+
+    .copy-toast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .steps {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    .steps h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .steps ol {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text-light);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .steps li a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .steps li a:hover {
+      text-decoration: underline;
+    }
+
+    .try-cta {
+      background: var(--blue);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .try-cta h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .try-cta p {
+      font-size: 1rem;
+      opacity: 0.88;
+      margin-bottom: 1rem;
+    }
+
+    .try-cta a {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease;
+    }
+
+    .try-cta a:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Übersicht</a>
+    <a href="../katalog/index.html">OGD-Katalog</a>
+    <a href="../starter-code/index.html">Starter Code</a>
+    <a class="active" href="../mcp-abfragen/index.html">MCP-Abfragen</a>
+    <a href="../anwendungen/index.html">Anwendungen</a>
+  </nav>
+
+  <header>
+    <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
+    <div class="header-text">
+      <h1>Scientifica 2026: Datenabfragen via MCP</h1>
+      <p>MCP-Server ermöglichen KI-Assistenten den direkten Zugriff auf über 900 offene Datensätze der Stadt Zürich — einfach per natürlicher Sprache und ohne technisches Vorwissen.</p>
+    </div>
+    <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
+  </header>
+
+  <main>
+
+    <div class="intro">
+      <div class="intro-text">
+        <h2>Worum geht es?</h2>
+        <p>Das Model Context Protocol (MCP) ist ein offener Standard, der es KI-Assistenten wie Claude, ChatGPT oder Mistral ermöglicht, strukturiert auf externe Datenquellen zuzugreifen.</p>
+        <p>MCP-Server fungieren dabei als Brücke zwischen den Sprachmodellen und den Daten. Für den OGD-Katalog der Stadt Zürich wurden unabhängig voneinander mehrere MCP-Server entwickelt, die den Zugang zu den über 900 offenen Datensätzen erheblich vereinfachen.</p>
+        <p>MCP-Server beseitigen bisherige Zugangshürden. Sie ermöglichen es allen Personen — unabhängig von ihren technischen Kenntnissen — direkt mit offenen Daten zu arbeiten.</p>
+      </div>
+      <img class="intro-image" src="https://www.stadt-zuerich.ch/content/web/de/politik-und-verwaltung/statistik-und-daten/open-government-data/anwendungen/anwendungen-2026/ckan-mcp-server/_jcr_content/pageimage.2520.1120.png/1779193123253.png" alt="MCP-Server für den OGD-Katalog">
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <strong>Kein technisches Vorwissen nötig</strong>
+        <span>Fragen in natürlicher Sprache stellen, Daten direkt erhalten.</span>
+      </div>
+      <div class="benefit">
+        <strong>Nur lesender Zugriff</strong>
+        <span>Die Server verändern keine Daten und speichern keine Nutzerdaten.</span>
+      </div>
+      <div class="benefit">
+        <strong>Kompatibel mit vielen KI-Assistenten</strong>
+        <span>Claude, ChatGPT, Mistral, Gemini, Kimi und weitere.</span>
+      </div>
+      <div class="benefit">
+        <strong>Alle Daten unter CC0-Lizenz</strong>
+        <span>Frei und ohne Einschränkungen nutzbar.</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">MCP-Server im Überblick</h2>
+
+    <div class="steps">
+      <h3>Kurzanleitung: MCP-Server aktivieren</h3>
+      <ol>
+        <li><strong>Claude.ai öffnen</strong> — Im Browser auf <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> gehen und anmelden.</li>
+        <li><strong>Konnektor hinzufügen</strong> — In den Einstellungen unter «Integrations» einen neuen MCP-Konnektor anlegen.</li>
+        <li><strong>Server-URL einfügen</strong> — Die gehostete URL des gewünschten MCP-Servers eintragen (siehe unten).</li>
+        <li><strong>Frage stellen</strong> — Im Chat eine Frage in natürlicher Sprache stellen — Claude greift automatisch auf die Daten zu.</li>
+      </ol>
+    </div>
+
+    <div class="try-cta">
+      <h2>Jetzt selber ausprobieren</h2>
+      <p>Die MCP-Server lassen sich direkt im Browser als Konnektor einbinden — ganz ohne lokale Installation.</p>
+      <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai öffnen</a>
+    </div>
+
+    <div class="examples-section">
+      <h2 class="section-title">Beispielabfragen</h2>
+
+      <div class="example-group">
+        <h3>zurich-opendata-mcp</h3>
+        <div class="example-queries">
+          <span class="example-query">Wie war die Temperatur vor einem Jahr in Zürich?</span>
+          <span class="example-query">Zeige mir alle Schulanlagen als GeoJSON.</span>
+          <span class="example-query">Welche Vorstösse zum Thema Velo gibt es im Gemeinderat?</span>
+          <span class="example-query">Wie viele freie Parkplätze gibt es gerade in der Innenstadt?</span>
+          <span class="example-query">Wie hat sich die Luftqualität in den letzten Stunden verändert?</span>
+        </div>
+      </div>
+
+      <div class="example-group">
+        <h3>metaodi-mcp-server</h3>
+        <div class="example-queries">
+          <span class="example-query">Wann ist die nächste Kartonsammlung in Zürich?</span>
+          <span class="example-query">Welche Abfalltypen werden in meiner Region gesammelt?</span>
+          <span class="example-query">Wie warm ist es gerade am Mythenquai?</span>
+          <span class="example-query">Zeige mir die Wetterdaten der Station Tiefenbrunnen.</span>
+          <span class="example-query">Wie hat sich die Wassertemperatur am Zürichsee entwickelt?</span>
+        </div>
+      </div>
+
+      <div class="example-group">
+        <h3>ckan-mcp-server</h3>
+        <div class="example-queries">
+          <span class="example-query">Suche Datensätze zur Bevölkerungsentwicklung in der Stadt Zürich.</span>
+          <span class="example-query">Welche offenen Datensätze gibt es zu Bildung auf opendata.swiss?</span>
+          <span class="example-query">Zeige mir die neuesten Datensätze auf dem OGD-Katalog der Stadt Zürich.</span>
+          <span class="example-query">Welche CKAN-Portale gibt es in der Schweiz?</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Die drei MCP-Server im Detail</h2>
+
+    <div class="servers">
+      <div class="server-card">
+        <h3>zurich-opendata-mcp</h3>
+        <p>Ein spezialisierter MCP-Server für den OGD-Katalog der Stadt Zürich, der aktuell über 20 Tools und 6 verschiedene APIs unter einer einheitlichen Schnittstelle zusammenführt. Zugriff auf Echtzeitdaten, Geodaten und Parlamentsinformationen.</p>
+        <div class="server-meta">Entwicklung: Hayal Oezkan &middot; Hosting: Christian Stocker / Liip</div>
+        <a class="server-link" href="https://github.com/malkreide/zurich-opendata-mcp" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
+      </div>
+      <div class="server-card">
+        <h3>metaodi-mcp-server</h3>
+        <p>Macht Abfallsammeltermine (OpenERZ) und Wettermessdaten der Wasserschutzpolizei (tecdottir) aus der Stadt Zürich direkt in KI-Assistenten verfügbar.</p>
+        <div class="server-meta">Entwicklung: Stefan Oderbolz</div>
+        <a class="server-link" href="https://github.com/metaodi/metaodi-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
+      </div>
+      <div class="server-card">
+        <h3>ckan-mcp-server</h3>
+        <p>Ein universeller MCP-Server für alle CKAN-Portale weltweit — darunter der OGD-Katalog der Stadt Zürich, opendata.swiss, data.gov und rund 950 weitere Datenportale.</p>
+        <div class="server-meta">Entwicklung: onData (Italien)</div>
+        <a class="server-link" href="https://github.com/ondata/ckan-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      Statistik Stadt Zürich — Open Government Data
+      <br>
+      <a href="https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/open-government-data/anwendungen/anwendungen-2026/ckan-mcp-server.html" target="_blank" rel="noopener">
+        Mehr Informationen auf stadt-zuerich.ch
+      </a>
+    </p>
+  </footer>
+
+  <div class="reset-overlay" id="resetOverlay">
+    <h2>Willkommen!</h2>
+    <p>Berühren Sie den Bildschirm, um zu starten.</p>
+  </div>
+
+  <div class="copy-toast" id="copyToast">Kopiert — jetzt in Claude einfügen!</div>
+
+  <script src="../shared/kiosk.js"></script>
+  <script>
+    document.querySelectorAll('.example-query').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var text = this.textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          el.classList.add('copied');
+          var toast = document.getElementById('copyToast');
+          toast.classList.add('visible');
+          setTimeout(function() {
+            el.classList.remove('copied');
+            toast.classList.remove('visible');
+          }, 1500);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
