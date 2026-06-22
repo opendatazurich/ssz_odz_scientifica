@@ -6,72 +6,6 @@
   <title>Scientifica 2026: Datenabfragen via MCP</title>
   <link rel="stylesheet" href="../shared/style.css">
   <style>
-    .intro {
-      display: flex;
-      gap: 2.5rem;
-      align-items: flex-start;
-      margin-bottom: 2.5rem;
-    }
-
-    .intro-text {
-      flex: 1;
-    }
-
-    .intro-text h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .intro-text p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-light);
-      margin-bottom: 0.75rem;
-    }
-
-    .intro-image {
-      width: 320px;
-      flex-shrink: 0;
-      border-radius: var(--radius);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .benefit {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .benefit strong {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-      color: var(--text);
-    }
-
-    .benefit span {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.5;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      color: var(--text);
-    }
-
     .servers {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -185,115 +119,22 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    .steps {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      margin-bottom: 2rem;
-    }
-
-    .steps h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .steps ol {
-      list-style: none;
-      counter-reset: step;
-      padding: 0;
-    }
-
-    .steps li {
-      counter-increment: step;
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--text-light);
-    }
-
-    .steps li::before {
-      content: counter(step);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    .steps li a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .steps li a:hover {
-      text-decoration: underline;
-    }
-
-    .try-cta {
-      background: var(--blue);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .try-cta h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .try-cta p {
-      font-size: 1rem;
-      opacity: 0.88;
-      margin-bottom: 1rem;
-    }
-
-    .try-cta a {
-      display: inline-block;
-      background: #fff;
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.7rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.15s ease;
-    }
-
-    .try-cta a:hover {
-      transform: scale(1.03);
-    }
   </style>
 </head>
 <body>
 
   <nav>
     <a href="../index.html">Übersicht</a>
-    <a href="../katalog/index.html">OGD-Katalog</a>
-    <a href="../starter-code/index.html">Starter Code</a>
-    <a class="active" href="../mcp-abfragen/index.html">MCP-Abfragen</a>
-    <a href="../anwendungen/index.html">Anwendungen</a>
+    <a href="../katalog/index.html">Daten finden</a>
+    <a href="../starter-code/index.html">Daten nutzen</a>
+    <a class="active" href="../mcp-abfragen/index.html">Daten abfragen</a>
+    <a href="../anwendungen/index.html">Daten erleben</a>
   </nav>
 
   <header>
     <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
     <div class="header-text">
-      <h1>Scientifica 2026: Datenabfragen via MCP</h1>
+      <h1>Scientifica 2026: Open Government Data</h1>
       <p>MCP-Server ermöglichen KI-Assistenten den direkten Zugriff auf über 900 offene Datensätze der Stadt Zürich — einfach per natürlicher Sprache und ohne technisches Vorwissen.</p>
     </div>
     <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">

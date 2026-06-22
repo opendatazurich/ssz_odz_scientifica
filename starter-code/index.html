@@ -14,152 +14,10 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
-    .intro-text h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .intro-text p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-light);
-      margin-bottom: 0.75rem;
-    }
-
     .clearfix::after {
       content: "";
       display: table;
       clear: both;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .benefit {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .benefit strong {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-      color: var(--text);
-    }
-
-    .benefit span {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.5;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      color: var(--text);
-    }
-
-    .steps {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      margin-bottom: 2.5rem;
-    }
-
-    .steps h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .steps ol {
-      list-style: none;
-      counter-reset: step;
-      padding: 0;
-    }
-
-    .steps li {
-      counter-increment: step;
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--text-light);
-    }
-
-    .steps li::before {
-      content: counter(step);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    .steps li a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .steps li a:hover {
-      text-decoration: underline;
-    }
-
-    .try-cta {
-      background: var(--blue);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .try-cta h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .try-cta p {
-      font-size: 1rem;
-      opacity: 0.88;
-      margin-bottom: 1rem;
-    }
-
-    .try-cta a {
-      display: inline-block;
-      background: #fff;
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.7rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.15s ease;
-    }
-
-    .try-cta a:hover {
-      transform: scale(1.03);
     }
 
     .notebook-content {
@@ -213,41 +71,22 @@
       text-align: center;
     }
 
-    .tech-note {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    .tech-note a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .tech-note a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
 
   <nav>
     <a href="../index.html">Übersicht</a>
-    <a href="../katalog/index.html">OGD-Katalog</a>
-    <a class="active" href="../starter-code/index.html">Starter Code</a>
-    <a href="../mcp-abfragen/index.html">MCP-Abfragen</a>
-    <a href="../anwendungen/index.html">Anwendungen</a>
+    <a href="../katalog/index.html">Daten finden</a>
+    <a class="active" href="../starter-code/index.html">Daten nutzen</a>
+    <a href="../mcp-abfragen/index.html">Daten abfragen</a>
+    <a href="../anwendungen/index.html">Daten erleben</a>
   </nav>
 
   <header>
     <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
     <div class="header-text">
-      <h1>Scientifica 2026: Starter Code</h1>
+      <h1>Scientifica 2026: Open Government Data</h1>
       <p>Vom Datenkatalog direkt ins Notebook — ohne Installation, ohne Setup. Ein Browser genügt.</p>
     </div>
     <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
