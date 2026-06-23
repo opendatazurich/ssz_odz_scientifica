@@ -16,29 +16,49 @@
     .server-card {
       background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.75rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      border-left: 4px solid var(--accent);
+      border: 1px solid #e8e8ee;
+      display: flex;
+      flex-direction: column;
     }
 
     .server-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--text);
+      margin-bottom: 0.6rem;
+      color: var(--blue);
     }
 
     .server-card p {
-      font-size: 0.92rem;
-      line-height: 1.55;
+      font-size: 0.9rem;
+      line-height: 1.6;
       color: var(--text-light);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    .server-card .example-queries {
+      margin: 1rem 0;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .server-card .queries-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
     }
 
     .server-meta {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-light);
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      padding-top: 0.75rem;
+      border-top: 1px solid #eee;
     }
 
     .server-link {
@@ -47,54 +67,40 @@
       font-weight: 600;
       color: var(--accent);
       text-decoration: none;
+      margin-top: 0.4rem;
     }
 
     .server-link:hover {
       text-decoration: underline;
     }
 
-    .examples-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .example-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .example-group h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--blue);
-    }
-
     .example-queries {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .example-query {
-      background: var(--card-bg);
-      border: 1px solid #e0e0e0;
-      border-radius: 24px;
-      padding: 0.5rem 1rem;
-      font-size: 0.88rem;
-      color: var(--text);
+      background: var(--blue-light);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--blue);
       line-height: 1.4;
       cursor: pointer;
-      transition: border-color 0.15s ease, background 0.15s ease;
+      transition: background 0.15s ease, transform 0.15s;
       position: relative;
     }
 
     .example-query:hover {
-      border-color: var(--accent);
-      background: var(--blue-light);
+      background: #d4d2ed;
+      transform: scale(1.02);
     }
 
     .example-query.copied {
-      border-color: #2e7d32;
-      background: #e8f5e9;
+      background: #c6efce;
+      color: #1a7d2f;
     }
 
     .copy-toast {
@@ -135,7 +141,7 @@
     <img class="header-eye" src="../shared/eth_Auge1_transparent.png" alt="">
     <div class="header-text">
       <h1>Scientifica 2026: Open Government Data</h1>
-      <p>MCP-Server ermöglichen KI-Assistenten den direkten Zugriff auf über 900 offene Datensätze der Stadt Zürich — einfach per natürlicher Sprache und ohne technisches Vorwissen.</p>
+      <p>Offene Daten der Stadt Zürich per KI abfragen — einfach in natürlicher Sprache.</p>
     </div>
     <img class="header-logo" src="../shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
   </header>
@@ -144,10 +150,11 @@
 
     <div class="intro">
       <div class="intro-text">
-        <h2>Worum geht es?</h2>
-        <p>Das Model Context Protocol (MCP) ist ein offener Standard, der es KI-Assistenten wie Claude, ChatGPT oder Mistral ermöglicht, strukturiert auf externe Datenquellen zuzugreifen.</p>
-        <p>MCP-Server fungieren dabei als Brücke zwischen den Sprachmodellen und den Daten. Für den OGD-Katalog der Stadt Zürich wurden unabhängig voneinander mehrere MCP-Server entwickelt, die den Zugang zu den über 900 offenen Datensätzen erheblich vereinfachen.</p>
-        <p>MCP-Server beseitigen bisherige Zugangshürden. Sie ermöglichen es allen Personen — unabhängig von ihren technischen Kenntnissen — direkt mit offenen Daten zu arbeiten.</p>
+        <h2>KI + Daten — wie geht das?</h2>
+        <p>KI-Assistenten wie Claude oder ChatGPT können von sich aus noch nicht auf externe Datenquellen zugreifen. Damit sie Fragen zu Zürichs offenen Daten beantworten können, brauchen sie eine Verbindung zum Datenkatalog. Genau das leisten <strong>MCP-Server</strong>.</p>
+
+        <h2>Was ist MCP?</h2>
+        <p>MCP (Model Context Protocol) ist ein offener Standard, der KI-Assistenten strukturiert mit Datenquellen verbindet. Über MCP-Server lassen sich einem KI-Agenten gezielt neue Fähigkeiten beibringen — etwa das Durchsuchen eines Datenkatalogs, das Abfragen von Statistiken oder das Lesen von Geodaten. Für die offenen Daten der Stadt Zürich gibt es aktuell drei solche Server.</p>
       </div>
       <img class="intro-image" src="https://www.stadt-zuerich.ch/content/web/de/politik-und-verwaltung/statistik-und-daten/open-government-data/anwendungen/anwendungen-2026/ckan-mcp-server/_jcr_content/pageimage.2520.1120.png/1779193123253.png" alt="MCP-Server für den OGD-Katalog">
     </div>
@@ -171,10 +178,10 @@
       </div>
     </div>
 
-    <h2 class="section-title">MCP-Server im Überblick</h2>
+    <h2 class="section-title">MCP-Server einrichten</h2>
 
     <div class="steps">
-      <h3>Kurzanleitung: MCP-Server aktivieren</h3>
+      <h3>In 4 Schritten zum ersten Ergebnis</h3>
       <ol>
         <li><strong>Claude.ai öffnen</strong> — Im Browser auf <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> gehen und anmelden.</li>
         <li><strong>Konnektor hinzufügen</strong> — In den Einstellungen unter «Integrations» einen neuen MCP-Konnektor anlegen.</li>
@@ -189,61 +196,48 @@
       <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai öffnen</a>
     </div>
 
-    <div class="examples-section">
-      <h2 class="section-title">Beispielabfragen</h2>
+    <h2 class="section-title">Die MCP-Server im Detail</h2>
 
-      <div class="example-group">
+    <div class="servers">
+      <div class="server-card">
         <h3>zurich-opendata-mcp</h3>
+          <p>Spezialisierter MCP-Server für die Stadt Zürich mit 24 Tools und 6 APIs: <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">Open-Data-Katalog</a>, <a href="https://www.ogd.stadt-zuerich.ch/wfs/geoportal/" target="_blank" rel="noopener">Geodaten-Service</a>, <a href="https://www.gemeinderat-zuerich.ch" target="_blank" rel="noopener">Parlamentsinformationen</a>, <a href="https://opendatazurich.github.io/zt-api/" target="_blank" rel="noopener">Zürich Tourismus</a>, SPARQL Linked Data sowie Echtzeit-Parkplatzdaten. Inkl. Wetter, Luftqualität und Fussgängerfrequenzen.</p>
         <div class="example-queries">
+          <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query">Wie war die Temperatur vor einem Jahr in Zürich?</span>
           <span class="example-query">Zeige mir alle Schulanlagen als GeoJSON.</span>
           <span class="example-query">Welche Vorstösse zum Thema Velo gibt es im Gemeinderat?</span>
           <span class="example-query">Wie viele freie Parkplätze gibt es gerade in der Innenstadt?</span>
           <span class="example-query">Wie hat sich die Luftqualität in den letzten Stunden verändert?</span>
         </div>
+        <div class="server-meta">Entwicklung: Hayal Oezkan &middot; Python &middot; MIT-Lizenz</div>
+        <a class="server-link" href="https://github.com/malkreide/zurich-opendata-mcp" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
       </div>
-
-      <div class="example-group">
+      <div class="server-card">
         <h3>metaodi-mcp-server</h3>
+          <p>MCP-Server mit 10 Tools für zwei Datenquellen der Stadt Zürich: <a href="https://openerz.metaodi.ch" target="_blank" rel="noopener">Abfallsammeltermine</a> (Karton, Papier, Grüngut u.a. nach Region und Datum) und <a href="https://tecdottir.metaodi.ch" target="_blank" rel="noopener">Wettermessdaten</a> (Temperatur, Niederschlag, Wassertemperatur an verschiedenen Stationen).</p>
         <div class="example-queries">
+          <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query">Wann ist die nächste Kartonsammlung in Zürich?</span>
           <span class="example-query">Welche Abfalltypen werden in meiner Region gesammelt?</span>
           <span class="example-query">Wie warm ist es gerade am Mythenquai?</span>
           <span class="example-query">Zeige mir die Wetterdaten der Station Tiefenbrunnen.</span>
           <span class="example-query">Wie hat sich die Wassertemperatur am Zürichsee entwickelt?</span>
         </div>
+        <div class="server-meta">Entwicklung: Stefan Oderbolz &middot; Python &middot; Docker</div>
+        <a class="server-link" href="https://github.com/metaodi/metaodi-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
       </div>
-
-      <div class="example-group">
+      <div class="server-card">
         <h3>ckan-mcp-server</h3>
+          <p>Universeller MCP-Server für rund 950 CKAN-Portale weltweit mit über 25 Tools — darunter <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a>, <a href="https://opendata.swiss" target="_blank" rel="noopener">opendata.swiss</a>, <a href="https://data.gov" target="_blank" rel="noopener">data.gov</a> und <a href="https://data.europa.eu" target="_blank" rel="noopener">data.europa.eu</a>. Unterstützt Datensatz-Suche, SQL-Abfragen, SPARQL und Portal-Erkennung.</p>
         <div class="example-queries">
+          <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query">Suche Datensätze zur Bevölkerungsentwicklung in der Stadt Zürich.</span>
           <span class="example-query">Welche offenen Datensätze gibt es zu Bildung auf opendata.swiss?</span>
           <span class="example-query">Zeige mir die neuesten Datensätze auf dem OGD-Katalog der Stadt Zürich.</span>
           <span class="example-query">Welche CKAN-Portale gibt es in der Schweiz?</span>
         </div>
-      </div>
-    </div>
-
-    <h2 class="section-title">Die drei MCP-Server im Detail</h2>
-
-    <div class="servers">
-      <div class="server-card">
-        <h3>zurich-opendata-mcp</h3>
-        <p>Ein spezialisierter MCP-Server für den OGD-Katalog der Stadt Zürich, der aktuell über 20 Tools und 6 verschiedene APIs unter einer einheitlichen Schnittstelle zusammenführt. Zugriff auf Echtzeitdaten, Geodaten und Parlamentsinformationen.</p>
-        <div class="server-meta">Entwicklung: Hayal Oezkan &middot; Hosting: Christian Stocker / Liip</div>
-        <a class="server-link" href="https://github.com/malkreide/zurich-opendata-mcp" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
-      </div>
-      <div class="server-card">
-        <h3>metaodi-mcp-server</h3>
-        <p>Macht Abfallsammeltermine (OpenERZ) und Wettermessdaten der Wasserschutzpolizei (tecdottir) aus der Stadt Zürich direkt in KI-Assistenten verfügbar.</p>
-        <div class="server-meta">Entwicklung: Stefan Oderbolz</div>
-        <a class="server-link" href="https://github.com/metaodi/metaodi-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
-      </div>
-      <div class="server-card">
-        <h3>ckan-mcp-server</h3>
-        <p>Ein universeller MCP-Server für alle CKAN-Portale weltweit — darunter der OGD-Katalog der Stadt Zürich, opendata.swiss, data.gov und rund 950 weitere Datenportale.</p>
-        <div class="server-meta">Entwicklung: onData (Italien)</div>
+        <div class="server-meta">Entwicklung: onData (Italien) &middot; TypeScript &middot; MIT-Lizenz</div>
         <a class="server-link" href="https://github.com/ondata/ckan-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
       </div>
     </div>
@@ -254,8 +248,8 @@
     <p>
       Statistik Stadt Zürich — Open Government Data
       <br>
-      <a href="https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/open-government-data/anwendungen/anwendungen-2026/ckan-mcp-server.html" target="_blank" rel="noopener">
-        Mehr Informationen auf stadt-zuerich.ch
+      <a href="https://www.stadt-zuerich.ch/opendata" target="_blank" rel="noopener">
+        Mehr Informationen auf stadt-zuerich.ch/opendata
       </a>
     </p>
   </footer>
@@ -265,22 +259,26 @@
     <p>Berühren Sie den Bildschirm, um zu starten.</p>
   </div>
 
-  <div class="copy-toast" id="copyToast">Kopiert — jetzt in Claude einfügen!</div>
+  <div class="copy-toast" id="copyToast">Abfrage wird in Claude geöffnet...</div>
 
   <script src="../shared/kiosk.js"></script>
   <script>
+    var descriptions = document.querySelectorAll('.server-card p');
+    var maxH = 0;
+    descriptions.forEach(function(p) { if (p.offsetHeight > maxH) maxH = p.offsetHeight; });
+    descriptions.forEach(function(p) { p.style.minHeight = maxH + 'px'; });
+
+    var queries = document.querySelectorAll('.server-card .example-queries');
+    var maxQ = 0;
+    queries.forEach(function(q) { if (q.offsetHeight > maxQ) maxQ = q.offsetHeight; });
+    queries.forEach(function(q) { q.style.minHeight = maxQ + 'px'; });
+
     document.querySelectorAll('.example-query').forEach(function(el) {
       el.addEventListener('click', function() {
-        var text = this.textContent;
-        navigator.clipboard.writeText(text).then(function() {
-          el.classList.add('copied');
-          var toast = document.getElementById('copyToast');
-          toast.classList.add('visible');
-          setTimeout(function() {
-            el.classList.remove('copied');
-            toast.classList.remove('visible');
-          }, 1500);
-        });
+        var server = this.closest('.server-card').querySelector('h3').textContent;
+        var text = 'Verwende den ' + server + ' Server: ' + this.textContent;
+        var url = 'https://claude.ai/new?q=' + encodeURIComponent(text);
+        window.open(url, '_blank');
       });
     });
   </script>

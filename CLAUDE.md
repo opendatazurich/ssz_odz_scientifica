@@ -62,6 +62,7 @@ Alle Seiten nutzen `shared/style.css` und `shared/kiosk.js`. Jede Seite hat:
 - **Navigation** oben: Übersicht / Daten finden / Daten nutzen / Daten abfragen / Daten erleben
 - **Header** mit Scientifica-Auge (links, halb abgeschnitten), Titel «Scientifica 2026: Open Government Data» (Mitte, auf allen Seiten identisch), seitenspezifischer Untertitel, OGD-Sticker (rechts)
 - **Kiosk-Overlay** nach 3 Min. Inaktivität ("Willkommen! Berühren Sie den Bildschirm...")
+- **Footer** einheitlich auf allen Seiten: «Statistik Stadt Zürich — Open Government Data» mit Link zu `stadt-zuerich.ch/opendata`
 
 `shared/style.css` enthält neben den globalen Styles auch gemeinsame Komponenten-Styles:
 - `.steps` — Nummerierte Schritte-Listen (`position: absolute` für Counter statt Flex-Layout)
@@ -118,14 +119,16 @@ Quelldaten: `\\szh.loc\ssz\users\sszsim\Bilder\0_some\2026\starter-code-komm\`
 ### MCP-Abfragen-Seite (fertig)
 
 Aufbau:
-1. Einführung: Was ist MCP? (mit Bild von stadt-zuerich.ch)
+1. Einführung in zwei Teilen: «KI + Daten — wie geht das?» (Problem: KI-Agenten können noch nicht auf externe Daten zugreifen) und «Was ist MCP?» (Lösung: offener Standard, MCP-Server lehren KI-Agenten neue Fähigkeiten). Ein `.intro`-Block mit Bild rechts.
 2. 4 Vorteile als Kacheln
-3. Kurzanleitung: MCP-Server aktivieren (4 Schritte)
+3. «MCP-Server einrichten» — Kurzanleitung in 4 Schritten, mit Untertitel «In 4 Schritten zum ersten Ergebnis»
 4. CTA: Jetzt selber ausprobieren (Link zu claude.ai)
-5. Beispielabfragen als klickbare Chips (Klick = in Zwischenablage kopieren, Toast-Feedback)
-6. Die drei MCP-Server im Detail (zurich-opendata-mcp, metaodi, ckan-mcp)
-
-Referenzseite: https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/open-government-data/anwendungen/anwendungen-2026/ckan-mcp-server.html
+5. «Die MCP-Server im Detail» — 3 Server-Karten mit:
+   - Beschreibung mit Hyperlinks zu den jeweiligen Datenquellen (Open-Data-Katalog, Geodaten-Service, Parlamentsinformationen, Zürich Tourismus, OpenERZ, tecdottir, data.stadt-zuerich.ch, opendata.swiss, data.gov, data.europa.eu)
+   - Beispielabfragen als Chips direkt in den Karten (Label: «Beispielabfragen — klicken zum Ausprobieren»)
+   - Klick auf Chip öffnet `claude.ai/new?q=...` mit unsichtbarem Prefix «Verwende den [server-name] Server: ...» (JS liest Server-Name aus `h3` der Karte)
+   - JS-basierte Höhenangleichung: `min-height` auf `.server-card p` und `.example-queries` für einheitliche Ausrichtung
+   - Meta-Zeile (Entwicklung, Sprache, Lizenz) und GitHub-Link am Ende jeder Karte
 
 ### Anwendungen-Seite (fertig)
 
@@ -140,7 +143,7 @@ Referenzseite: https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-
 
 ### Technische Hinweise
 
-- Reine statische HTML/CSS/JS-Seiten, kein Build-System (einziges JS auf Starter-Code-Seite: `switchTab()` für Python/R-Tabs)
+- Reine statische HTML/CSS/JS-Seiten, kein Build-System (JS: `switchTab()` für Python/R-Tabs auf Starter-Code, Höhenangleichung + Claude-Deep-Links auf MCP-Seite)
 - Bilder der Anwendungen werden direkt von stadt-zuerich.ch (Scene7 CDN) geladen
 - Kategorie-Bilder des Katalogs von statistik.stadt-zuerich.ch
 - Auge-Bild: weisser Hintergrund wurde via Pillow entfernt (`eth_Auge1_transparent.png`)
