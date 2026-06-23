@@ -53,7 +53,7 @@ Scientifica/
 ├── mcp-abfragen/
 │   └── index.html                ← MCP-Server: Anleitung, Beispiele, Server-Details (fertig)
 └── anwendungen/
-    └── index.html                ← 6 OGD-Anwendungen als Bildkacheln (fertig)
+    └── index.html                ← 7 OGD-Anwendungen als Bildkacheln (fertig)
 ```
 
 ### Shared-Komponenten
@@ -97,7 +97,7 @@ Aufbau:
 Aufbau:
 1. Demo-Video (autoplay, Loop, links gefloated) + Einführungstext rechts
 2. 4 Vorteile als Kacheln (kein Setup, sofortiger Einstieg, für alle, reproduzierbar)
-3. So funktioniert es — 4 Schritte (unterhalb des Videos)
+3. So funktioniert es — 5 Schritte (unterhalb des Videos): Datensatz öffnen, Ressource auswählen, Renku starten (Python/R), SQL Workbench starten (DuckDB), Loslegen
 4. CTA: Jetzt ausprobieren (Link zu data.stadt-zuerich.ch)
 5. Notebook-Inhalt: Python und R nebeneinander
 6. Zielgruppen als Chips
