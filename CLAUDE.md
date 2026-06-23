@@ -68,8 +68,9 @@ Alle Seiten nutzen `shared/style.css` und `shared/kiosk.js`. Jede Seite hat:
 - `.intro`, `.intro-text` — Einführungsabschnitte mit Text + Bild
 - `.section-title` — Einheitliche Abschnittsüberschriften (1.4rem, 700)
 - `.features` / `.benefits` + `.feature` / `.benefit` — Merkmal-/Vorteil-Boxen
-- `.try-cta` — Call-to-Action-Banner (dunkelblau mit weissem Button)
+- `.try-cta` — Call-to-Action-Banner (dunkelblau, kann mehrere Buttons nebeneinander enthalten via `.try-cta-buttons`)
 - `.info-note` / `.tech-note` — Info-Hinweise am Seitenende
+- `pre, code` — `user-select: text` erlaubt Textselektion/Kopieren trotz Kiosk-Modus (`body { user-select: none }`)
 
 ### CI/CD-Farben (Stadt Zürich Palette)
 
@@ -98,10 +99,19 @@ Aufbau:
 1. Demo-Video (autoplay, Loop, links gefloated) + Einführungstext rechts
 2. 4 Vorteile als Kacheln (kein Setup, sofortiger Einstieg, für alle, reproduzierbar)
 3. So funktioniert es — 5 Schritte (unterhalb des Videos): Datensatz öffnen, Ressource auswählen, Renku starten (Python/R), SQL Workbench starten (DuckDB), Loslegen
-4. CTA: Jetzt ausprobieren (Link zu data.stadt-zuerich.ch)
-5. Notebook-Inhalt: Python und R nebeneinander
-6. Zielgruppen als Chips
-7. Technischer Hintergrund (RenkuLab, GitHub-Repo, 2'300+ Notebooks)
+4. CTA: Jetzt ausprobieren — zwei Optionen nebeneinander:
+   - «Beispielauswertungen anzeigen» (Toggle-Button, klappt Beispielblöcke darunter auf)
+   - «Datenkatalog öffnen» (Link zu data.stadt-zuerich.ch)
+   - Jeweils mit kurzer Beschreibung unter dem Button
+5. Beispielauswertungen (aufklappbar via `<details>`, standardmässig zugeklappt):
+   - **Luftqualität** — Python/R als Tabs, IDE-ähnliche Blöcke (helles Grau), nummerierte Schritt-Chips, Code in `<pre><code>`
+   - **Vornamensstatistik** — gleicher Aufbau, Namen anpassbar
+   - **Fahrzeuge nach Antriebsart** — direkter Link zur SQL Workbench (kein Code)
+   - Tab-Wechsel via `switchTab()` JS-Funktion (kein Framework)
+   - Schritte als horizontale Chips mit Züriblau-Nummernkreisen und Pfeil-Trennern
+6. Notebook-Inhalt: Python und R nebeneinander (Karten mit feinem grauem Border, Kategorie-Titel uppercase)
+7. Zielgruppen als Chips
+8. Technischer Hintergrund (RenkuLab, GitHub-Repo, 2'300+ Notebooks, SQL Workbench/DuckDB)
 
 Quelldaten: `\\szh.loc\ssz\users\sszsim\Bilder\0_some\2026\starter-code-komm\`
 
@@ -130,7 +140,7 @@ Referenzseite: https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-
 
 ### Technische Hinweise
 
-- Reine statische HTML/CSS/JS-Seiten, kein Build-System
+- Reine statische HTML/CSS/JS-Seiten, kein Build-System (einziges JS auf Starter-Code-Seite: `switchTab()` für Python/R-Tabs)
 - Bilder der Anwendungen werden direkt von stadt-zuerich.ch (Scene7 CDN) geladen
 - Kategorie-Bilder des Katalogs von statistik.stadt-zuerich.ch
 - Auge-Bild: weisser Hintergrund wurde via Pillow entfernt (`eth_Auge1_transparent.png`)

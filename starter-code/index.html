@@ -30,16 +30,20 @@
     .notebook-card {
       background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.5rem 1.5rem 1.25rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      border-left: 4px solid var(--accent);
+      border: 1px solid #e8e8ee;
     }
 
     .notebook-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #888;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #eee;
     }
 
     .notebook-card ol {
@@ -52,6 +56,11 @@
       color: var(--text-light);
       line-height: 1.55;
       margin-bottom: 0.3rem;
+    }
+
+    .notebook-card li::marker {
+      color: var(--blue);
+      font-weight: 700;
     }
 
     .audience {
@@ -70,6 +79,197 @@
       color: var(--blue);
       text-align: center;
     }
+
+    .try-cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .try-cta-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .try-cta-desc {
+      font-size: 0.82rem;
+      opacity: 0.75;
+      max-width: 280px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .try-cta-or {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .try-cta-examples {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.7);
+      padding: 0.7rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      font-family: inherit;
+    }
+
+    .try-cta-examples:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #fff;
+      transform: scale(1.03);
+    }
+
+    .examples-toggle {
+      margin-bottom: 2.5rem;
+    }
+
+    .example-block {
+      background: #e8eaed;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .example-header {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #d0d4da;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .example-header h3 {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #888;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .example-header p {
+      font-size: 1rem;
+      color: var(--text);
+      margin: 0;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .lang-tabs {
+      display: flex;
+      background: #dde0e4;
+      border-bottom: 1px solid #d0d4da;
+    }
+
+    .lang-tab {
+      padding: 0.45rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #666;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .lang-tab:hover { color: var(--text); }
+
+    .lang-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .lang-panel {
+      display: none;
+      padding: 1rem 1.25rem;
+    }
+
+    .lang-panel.active { display: block; }
+
+    .lang-panel .example-steps {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .lang-panel .example-steps .step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      border: 1px solid #d0d4da;
+      border-radius: 6px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .lang-panel .example-steps .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .lang-panel .example-steps .step-arrow {
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+
+    .lang-panel .example-steps a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .lang-panel .example-steps a:hover { text-decoration: underline; }
+
+    .lang-panel pre {
+      background: #f4f5f7;
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      line-height: 1.55;
+      color: #2a2a2a;
+      margin: 0;
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    }
+
+    .example-block .btn-link {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin: 1rem 1.25rem 1.25rem;
+      transition: opacity 0.15s;
+    }
+
+    .example-block .btn-link:hover { opacity: 0.85; }
 
   </style>
 </head>
@@ -140,9 +340,178 @@
 
     <div class="try-cta">
       <h2>Jetzt selber ausprobieren</h2>
-      <p>Öffnen Sie den Datenkatalog, wählen Sie einen Datensatz und klicken Sie auf das Renku-Logo.</p>
-      <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch öffnen</a>
+      <div class="try-cta-buttons">
+        <div class="try-cta-option">
+          <button class="try-cta-examples" onclick="document.getElementById('examples').toggleAttribute('open')">Beispielauswertungen anzeigen</button>
+          <span class="try-cta-desc">Fertige Analysen zum Nachmachen — direkt hier auf der Seite</span>
+        </div>
+        <span class="try-cta-or">oder</span>
+        <div class="try-cta-option">
+          <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">Datenkatalog öffnen</a>
+          <span class="try-cta-desc">Alle 900+ Datensätze durchsuchen und eigenen Starter Code starten</span>
+        </div>
+      </div>
     </div>
+
+    <details class="examples-toggle" id="examples">
+      <summary style="display:none;"></summary>
+
+      <div class="example-block">
+        <div class="example-header">
+          <h3>Luftqualität und Grenzwerte</h3>
+          <p>Werden die Feinstaub-Grenzwerte in Zürich überschritten?</p>
+        </div>
+        <div class="lang-tabs">
+          <button class="lang-tab active" onclick="switchTab(this, 'luft-py')">Python</button>
+          <button class="lang-tab" onclick="switchTab(this, 'luft-r')">R</button>
+        </div>
+        <div id="luft-py" class="lang-panel active">
+          <div class="example-steps">
+            <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01KC1K2SN2GAQSGJ3NY602EA95/start?PACKAGE_ID=ugz_luftschadstoffmessung_tageswerte&RESOURCE_ID=75fbb34e-2dd1-4a4b-b992-53127c6820dd" target="_blank" rel="noopener">Notebook öffnen</a></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">3</span> Code unten in neue Zelle einfügen, <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code>import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "iframe"
+
+df1 = df[df["Parameter"]=="PM10"]
+# 24h-Mittelwert; darf höchstens einmal pro Jahr überschritten werden
+grenzwert = 50
+fig = px.line(
+    df1,
+    x="Datum",
+    y="Wert",
+    facet_col="Parameter",
+    facet_row="Standort",
+    color="Einheit",
+    title="Tagesmittelwerte für Feinstaub (PM10)",
+)
+fig.update_yaxes(matches=None)
+fig.update_layout(
+    height=1000,
+    width=1000
+)
+fig.add_hline(
+    y=grenzwert,
+    line_dash="dash",
+    line_color="red",
+)
+fig.show()</code></pre>
+        </div>
+        <div id="luft-r" class="lang-panel">
+          <div class="example-steps">
+            <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01K7HKDF1S55RHSZPCK4SHTX1H/start?PACKAGE_ID=ugz_luftschadstoffmessung_tageswerte&RESOURCE_ID=75fbb34e-2dd1-4a4b-b992-53127c6820dd" target="_blank" rel="noopener">Notebook öffnen</a> &rarr;</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">2</span> <strong>Run → Run all</strong></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">3</span> Code unten in neue Zelle einfügen, <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code># Daten filtern
+df1 &lt;- df %&gt;%
+  filter(Parameter == "PM10")
+
+# Grenzwert
+grenzwert &lt;- 50
+
+# Plot
+ggplot(df1, aes(x = Datum, y = Wert, color = Einheit)) +
+  geom_line() +
+  scale_color_manual(values = "blue") +
+  facet_grid(Standort ~ Parameter, scales = "free_y") +
+  geom_hline(yintercept = grenzwert,
+             linetype = "dashed",
+             color = "red") +
+  labs(
+    title = "Tagesmittelwerte für Feinstaub (PM10)",
+    x = "Datum",
+    y = "Wert",
+    color = "Einheit"
+  ) +
+  theme_minimal()</code></pre>
+        </div>
+      </div>
+
+      <div class="example-block">
+        <div class="example-header">
+          <h3>Vornamensstatistik</h3>
+          <p>Wie beliebt ist dein Name bei Neugeborenen?</p>
+        </div>
+        <div class="lang-tabs">
+          <button class="lang-tab active" onclick="switchTab(this, 'namen-py')">Python</button>
+          <button class="lang-tab" onclick="switchTab(this, 'namen-r')">R</button>
+        </div>
+        <div id="namen-py" class="lang-panel active">
+          <div class="example-steps">
+            <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01KC1K2SN2GAQSGJ3NY602EA95/start?PACKAGE_ID=bev_vornamen_baby_od3700&RESOURCE_ID=7abf8562-4568-4c8c-8f1f-a842a5a54616" target="_blank" rel="noopener">Notebook öffnen</a></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">3</span> Namen anpassen, Code einfügen, <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code># füge hier die Namen ein, die dich interessieren
+namen = ["Andrea", "Marco", "Alexander"]
+
+df_namen = (
+    df[df["Vorname"].isin(namen)]
+    .groupby(["StichtagDatJahr", "Vorname"])
+    .agg(Anzahl=("AnzGebuWir", "sum"))
+    .reset_index()
+)
+
+fig, ax = plt.subplots(figsize=(10, 5))
+for name in namen:
+    subset = df_namen[df_namen["Vorname"] == name]
+    ax.plot(subset["StichtagDatJahr"], subset["Anzahl"], marker="o", label=name)
+
+ax.set_xlabel("Jahr")
+ax.set_ylabel("Anzahl Neugeborene")
+ax.set_title("Vornamen – Neugeborene in Zürich")
+ax.legend()
+plt.tight_layout()
+plt.show()</code></pre>
+        </div>
+        <div id="namen-r" class="lang-panel">
+          <div class="example-steps">
+            <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01K7HKDF1S55RHSZPCK4SHTX1H/start?PACKAGE_ID=bev_vornamen_baby_od3700" target="_blank" rel="noopener">Notebook öffnen</a></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step"><span class="step-num">3</span> Namen anpassen, Code einfügen, <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code># füge hier die Namen ein, die dich interessieren
+namen &lt;- c("Andrea", "Marco", "Alexander")
+
+df_namen &lt;- df %&gt;%
+    filter(Vorname %in% namen) %&gt;%
+    group_by(StichtagDatJahr, Vorname) %&gt;%
+    summarise(Anzahl = sum(AnzGebuWir), .groups = "drop")
+
+# Liniendiagramm erstellen
+ggplot(df_namen, aes(x = StichtagDatJahr, y = Anzahl, color = Vorname)) +
+    geom_line(size = 1) +
+    geom_point() +
+    labs(
+    title = "Vornamen – Neugeborene in Zürich",
+    x = "Jahr",
+    y = "Anzahl Neugeborene",
+    color = "Vorname"
+    ) +
+    theme_minimal()</code></pre>
+        </div>
+      </div>
+
+      <div class="example-block">
+        <div class="example-header">
+          <h3>Fahrzeuge nach Antriebsart</h3>
+          <p>Wie verbreitet sind Elektrofahrzeuge oder Benziner?</p>
+        </div>
+        <a class="btn-link" href="https://sql-workbench.com/#config=%7B%22plugin%22%3A%22Y%20Area%22%2C%22plugin_config%22%3A%7B%7D%2C%22title%22%3A%22Data%22%2C%22group_by%22%3A%5B%22StichtagDatJahr%22%5D%2C%22split_by%22%3A%5B%22Treibstoffart2Lang%22%5D%2C%22columns%22%3A%5B%22AnzFahrzeuge%22%5D%2C%22columns_config%22%3A%7B%7D%2C%22filter%22%3A%5B%5D%2C%22sort%22%3A%5B%5D%2C%22expressions%22%3A%7B%7D%2C%22aggregates%22%3A%7B%7D%7D&queries=v0,CREATE-TABLE-metadata-AS-SELECT-*-FROM-read_json(%22https%3A%2F%2Fdata.stadt%20zuerich.ch%2Fapi%2Faction%2Fpackage_show%3Fid%3Dprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%22)~,CREATE-TABLE-ogdszh-AS-SELECT-*-FROM-read_csv(%22https%3A%2F%2Fcors.sqlqry.run%2F%3Furl%3Dhttps%3A%2F%2Fdata.stadt%20zuerich.ch%2Fdataset%2Fprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%2Fdownload%2FVER200OD2002.csv%22)~,SELECT-*-FROM-ogdszh~" target="_blank" rel="noopener">Interaktives Diagramm in SQL Workbench öffnen</a>
+      </div>
+
+    </details>
 
     <h2 class="section-title">Was ist im Notebook enthalten?</h2>
 
@@ -186,7 +555,8 @@
     <h2 class="section-title">Technischer Hintergrund</h2>
 
     <div class="tech-note">
-      Starter Code nutzt <a href="https://renkulab.io" target="_blank" rel="noopener">RenkuLab.io</a>, eine Open-Source-Plattform für reproduzierbare Datenanalyse, betrieben von der ETH Zürich / SDSC. Das zugrunde liegende <a href="https://github.com/opendatazurich/starter-code" target="_blank" rel="noopener">GitHub-Repository</a> enthält über 2'300 automatisch generierte Notebooks — je eines in Python und R für jeden der rund 1'170 unterstützten Datensätze. Aufbauend auf dem Starter Code des Statistischen Amts des Kantons Zürich wurde die Lösung u.a. um direkte Katalog-Verlinkung, Geodaten-Support und Parquet-Formate erweitert.
+      <p>Starter Code nutzt <a href="https://renkulab.io" target="_blank" rel="noopener">RenkuLab.io</a>, eine Open-Source-Plattform für reproduzierbare Datenanalyse, betrieben von der ETH Zürich / SDSC. Das zugrunde liegende <a href="https://github.com/opendatazurich/starter-code" target="_blank" rel="noopener">GitHub-Repository</a> enthält über 2'300 automatisch generierte Notebooks — je eines in Python und R für jeden der rund 1'170 unterstützten Datensätze. Aufbauend auf dem Starter Code des Statistischen Amts des Kantons Zürich wurde die Lösung u.a. um direkte Katalog-Verlinkung, Geodaten-Support und Parquet-Formate erweitert.</p>
+      <p style="margin-top: 1rem;"><a href="https://github.com/tobilg/sql-workbench" target="_blank" rel="noopener">SQL Workbench</a> ist eine schlanke JavaScript-Bibliothek und ermöglicht die Online-Abfrage von CSV-, JSON-, Parquet- und Arrow-Datenquellen sowie von hochgeladenen lokalen Dateien direkt über DuckDB im Browser. Ein Backend ist nicht erforderlich. Ein Schwerpunkt liegt auf dem Datenschutz: Es verlassen keine Daten den Rechner der Nutzer. Alle WASM-kompatiblen DuckDB-Erweiterungen können ebenfalls verwendet werden.</p>
     </div>
 
   </main>
@@ -204,6 +574,15 @@
     <p>Berühren Sie den Bildschirm, um zu starten.</p>
   </div>
 
+  <script>
+    function switchTab(btn, panelId) {
+      var block = btn.closest('.example-block');
+      block.querySelectorAll('.lang-tab').forEach(function(t) { t.classList.remove('active'); });
+      block.querySelectorAll('.lang-panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+    }
+  </script>
   <script src="../shared/kiosk.js"></script>
 </body>
 </html>
