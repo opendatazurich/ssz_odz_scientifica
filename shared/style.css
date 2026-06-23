@@ -56,23 +56,23 @@ nav a.active {
 header {
   background: var(--blue);
   color: #fff;
-  padding: 2rem 3rem;
+  padding: 1.2rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   position: relative;
   overflow: hidden;
-  min-height: 160px;
+  flex-shrink: 0;
 }
 
 .header-eye {
   position: absolute;
-  left: -100px;
+  left: -80px;
   top: 50%;
   transform: translateY(-50%);
-  width: 280px;
-  height: 280px;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 50%;
   pointer-events: none;
@@ -85,23 +85,22 @@ header {
 }
 
 header h1 {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
 
 header p {
-  font-size: 1.15rem;
+  font-size: 1rem;
   opacity: 0.88;
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .header-logo {
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
   object-fit: contain;
   z-index: 1;
@@ -203,6 +202,193 @@ footer a {
 }
 
 footer a:hover {
+  text-decoration: underline;
+}
+
+/* Intro */
+.intro {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.intro-text {
+  flex: 1;
+}
+
+.intro-text h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.intro-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.intro-image {
+  width: 320px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+/* Feature / Benefit boxes */
+.features, .benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.feature, .benefit {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature strong, .benefit strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.feature span, .benefit span {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* CTA banner */
+.try-cta {
+  background: var(--blue);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.try-cta h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.try-cta p {
+  font-size: 1rem;
+  opacity: 0.88;
+  margin-bottom: 1rem;
+}
+
+.try-cta a {
+  display: inline-block;
+  background: #fff;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.7rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.try-cta a:hover {
+  transform: scale(1.03);
+}
+
+/* Info note */
+.info-note, .tech-note {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.info-note a, .tech-note a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info-note a:hover, .tech-note a:hover {
+  text-decoration: underline;
+}
+
+/* Steps */
+.steps {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 2.5rem;
+}
+
+.steps h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.steps ol {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: calc(28px + 0.75rem);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-light);
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.steps li a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.steps li a:hover {
   text-decoration: underline;
 }
 

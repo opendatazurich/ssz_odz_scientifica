@@ -6,6 +6,25 @@
   <title>Scientifica 2026: Open Government Data — Stadt Zürich</title>
   <link rel="stylesheet" href="shared/style.css">
   <style>
+    body {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    main {
+      padding: 1.2rem 3rem;
+      flex: 1;
+      display: flex;
+      min-height: 0;
+    }
+
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      flex: 1;
+      min-height: 0;
+    }
+
     .station-card {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -18,7 +37,8 @@
       border: 2px solid transparent;
       text-decoration: none;
       color: inherit;
-      padding: 2rem;
+      padding: 0;
+      min-height: 0;
     }
 
     .station-card:hover, .station-card:focus-visible {
@@ -28,63 +48,90 @@
       outline: none;
     }
 
+    .station-image {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--blue-light);
+    }
+
+    .station-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .station-image .placeholder-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      opacity: 0.3;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
     .station-number {
+      position: absolute;
+      top: 0.6rem;
+      left: 0.6rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: var(--blue-light);
+      background: rgba(255,255,255,0.92);
       color: var(--blue);
       font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1;
+    }
+
+    .station-body {
+      padding: 0.8rem 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
       flex-shrink: 0;
+      height: 130px;
+    }
+
+    .station-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+      display: block;
     }
 
     .station-card h2 {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       color: var(--text);
     }
 
     .station-card p {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--text-light);
-      line-height: 1.55;
-      flex: 1;
+      line-height: 1.45;
     }
 
     .station-meta {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .station-badge {
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.25rem 0.7rem;
-      border-radius: 20px;
-      background: var(--blue-light);
-      color: var(--blue);
-    }
-
-    .station-badge.ready {
-      background: #e8f5e9;
-      color: #2e7d32;
-    }
-
-    .station-badge.todo {
-      background: #fff3e0;
-      color: #e65100;
-    }
-
     .station-cta {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--accent);
       display: flex;
@@ -101,8 +148,8 @@
       transform: translateX(4px);
     }
 
-    .cards {
-      grid-template-columns: repeat(2, 1fr);
+    footer {
+      padding: 0.5rem 3rem;
     }
   </style>
 </head>
@@ -110,17 +157,17 @@
 
   <nav>
     <a class="active" href="index.html">Übersicht</a>
-    <a href="katalog/index.html">OGD-Katalog</a>
-    <a href="starter-code/index.html">Starter Code</a>
-    <a href="mcp-abfragen/index.html">MCP-Abfragen</a>
-    <a href="anwendungen/index.html">Anwendungen</a>
+    <a href="katalog/index.html">Daten finden</a>
+    <a href="starter-code/index.html">Daten nutzen</a>
+    <a href="mcp-abfragen/index.html">Daten abfragen</a>
+    <a href="anwendungen/index.html">Daten erleben</a>
   </nav>
 
   <header>
     <img class="header-eye" src="shared/eth_Auge1_transparent.png" alt="">
     <div class="header-text">
       <h1>Scientifica 2026: Open Government Data</h1>
-      <p>Wie entsteht städtisches Wissen? Entdecken Sie, was mit offenen Daten der Stadt Zürich möglich ist.</p>
+      <p>Entdecken Sie, was mit offenen Daten der Stadt Zürich möglich ist.</p>
     </div>
     <img class="header-logo" src="shared/OGD_STICKER_final_zueriblau_hintergrund_quadr_noFill.png" alt="Open Data Zürich">
   </header>
@@ -129,42 +176,66 @@
     <div class="cards">
 
       <a class="station-card" href="katalog/index.html">
-        <span class="station-number">1</span>
-        <h2>OGD-Katalog durchsuchen</h2>
-        <p>Über 900 Datensätze der Stadt Zürich durchsuchen, filtern und entdecken.</p>
-        <div class="station-meta">
-          <span class="station-badge ready">Fertig</span>
-          <span class="station-cta">Öffnen</span>
+        <div class="station-image">
+          <span class="station-number">1</span>
+          <!-- Bild hier einfügen: <img src="DEINE_URL" alt="OGD-Katalog"> -->
+          <span class="placeholder-text">Bild einfügen</span>
+        </div>
+        <div class="station-body">
+          <span class="station-label">OGD-Katalog</span>
+          <h2>Wo finde ich offene Verwaltungsdaten?</h2>
+          <p>Über 900 Datensätze der Stadt Zürich durchsuchen, filtern und entdecken.</p>
+          <div class="station-meta">
+            <span class="station-cta">Öffnen</span>
+          </div>
         </div>
       </a>
 
       <a class="station-card" href="starter-code/index.html">
-        <span class="station-number">2</span>
-        <h2>Starter Code ausprobieren</h2>
-        <p>Erste Schritte mit offenen Daten — Code-Beispiele zum Anpassen und Ausführen.</p>
-        <div class="station-meta">
-          <span class="station-badge ready">Fertig</span>
-          <span class="station-cta">Öffnen</span>
+        <div class="station-image">
+          <span class="station-number">2</span>
+          <!-- Bild hier einfügen: <img src="DEINE_URL" alt="Starter Code"> -->
+          <span class="placeholder-text">Bild einfügen</span>
+        </div>
+        <div class="station-body">
+          <span class="station-label">Starter Code</span>
+          <h2>Wie kann ich sofort mit offenen Daten loslegen?</h2>
+          <p>Erste Schritte mit offenen Daten — Code-Beispiele zum Anpassen und Ausführen.</p>
+          <div class="station-meta">
+            <span class="station-cta">Öffnen</span>
+          </div>
         </div>
       </a>
 
       <a class="station-card" href="mcp-abfragen/index.html">
-        <span class="station-number">3</span>
-        <h2>Datenabfragen via MCP</h2>
-        <p>Fragen an städtische Daten stellen — in natürlicher Sprache, mit Antworten aus dem MCP-Server.</p>
-        <div class="station-meta">
-          <span class="station-badge ready">Fertig</span>
-          <span class="station-cta">Öffnen</span>
+        <div class="station-image">
+          <span class="station-number">3</span>
+          <!-- Bild hier einfügen: <img src="DEINE_URL" alt="MCP-Abfragen"> -->
+          <span class="placeholder-text">Bild einfügen</span>
+        </div>
+        <div class="station-body">
+          <span class="station-label">MCP-Abfragen</span>
+          <h2>Wie kann ich Daten in natürlicher Sprache abfragen?</h2>
+          <p>Fragen an städtische Daten stellen — in natürlicher Sprache unter Verwendung von MCP-Servern.</p>
+          <div class="station-meta">
+            <span class="station-cta">Öffnen</span>
+          </div>
         </div>
       </a>
 
       <a class="station-card" href="anwendungen/index.html">
-        <span class="station-number">4</span>
-        <h2>Existierende Anwendungen</h2>
-        <p>Sechs Anwendungen, die auf offenen Verwaltungsdaten basieren — von Kirschblüten-Karten bis Mietpreis-Vergleichen.</p>
-        <div class="station-meta">
-          <span class="station-badge ready">Fertig</span>
-          <span class="station-cta">Öffnen</span>
+        <div class="station-image">
+          <span class="station-number">4</span>
+          <!-- Bild hier einfügen: <img src="DEINE_URL" alt="Anwendungen"> -->
+          <span class="placeholder-text">Bild einfügen</span>
+        </div>
+        <div class="station-body">
+          <span class="station-label">Anwendungen</span>
+          <h2>Was wurde mit offenen Daten bereits erstellt?</h2>
+          <p>Beispielanwendungen, die auf offenen Verwaltungsdaten basieren — von Kirschblüten-Karten bis Mietpreis-Vergleichen.</p>
+          <div class="station-meta">
+            <span class="station-cta">Öffnen</span>
+          </div>
         </div>
       </a>
 
