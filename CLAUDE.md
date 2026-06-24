@@ -132,14 +132,13 @@ Aufbau:
 
 ### Anwendungen-Seite (fertig)
 
-7 Kacheln mit Bildern von stadt-zuerich.ch, jeweils als Link zur Detailseite:
+6 Kacheln mit Bildern von stadt-zuerich.ch, jeweils als Link zur Detailseite:
 1. Hanami Zürich (Kirschblüten-Karte)
 2. Wowoni (Mietpreis-Vergleich)
 3. Velounfallrisiko-Rechner
-4. Equal Street Names
-5. Water Fountains
+4. OGD4All (ETH Zürich — Geodaten in natürlicher Sprache abfragen)
+5. Equal Street Names
 6. Zürich, wer bist Du? (ZHdK/NZZ)
-7. OGD4All (YouTube-Erklärvideos)
 
 ### Technische Hinweise
 
