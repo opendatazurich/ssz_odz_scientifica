@@ -166,6 +166,18 @@
       font-style: italic;
     }
 
+    .query-question {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+      font-style: italic;
+      margin: 0.75rem 0 0.3rem;
+    }
+
+    .query-question:first-of-type {
+      margin-top: 0;
+    }
+
     .lang-tabs {
       display: flex;
       background: #dde0e4;
@@ -199,7 +211,7 @@
 
     .lang-panel.active { display: block; }
 
-    .lang-panel .example-steps {
+    .example-steps {
       display: flex;
       gap: 0.5rem;
       align-items: center;
@@ -207,7 +219,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .lang-panel .example-steps .step {
+    .example-steps .step {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -220,7 +232,7 @@
       line-height: 1.4;
     }
 
-    .lang-panel .example-steps .step-num {
+    .example-steps .step-num {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -234,19 +246,28 @@
       flex-shrink: 0;
     }
 
-    .lang-panel .example-steps .step-arrow {
+    .example-steps .step.renku .step-num {
+      background: #24b064;
+    }
+
+    .example-steps .step.sqlwb .step-num {
+      background: #e6a817;
+    }
+
+    .example-steps .step-arrow {
       color: #aaa;
       font-size: 0.8rem;
     }
 
-    .lang-panel .example-steps a {
+    .example-steps a {
       color: var(--accent);
       text-decoration: none;
     }
 
-    .lang-panel .example-steps a:hover { text-decoration: underline; }
+    .example-steps a:hover { text-decoration: underline; }
 
-    .lang-panel pre {
+    .lang-panel pre,
+    .example-block pre {
       background: #f4f5f7;
       border-radius: 4px;
       padding: 0.75rem 1rem;
@@ -407,72 +428,72 @@
           <div class="example-steps">
             <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01KC1K2SN2GAQSGJ3NY602EA95/start?PACKAGE_ID=ugz_luftschadstoffmessung_tageswerte&RESOURCE_ID=75fbb34e-2dd1-4a4b-b992-53127c6820dd" target="_blank" rel="noopener">Notebook öffnen</a></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step renku"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">3</span> Code unten in neue Zelle einfügen, <strong>Ctrl+Enter</strong></span>
+            <span class="step renku"><span class="step-num">3</span> Code unten kopieren und in neue Zelle einfügen → <strong>Ctrl+Enter</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ oben links beenden</span>
+            <span class="step renku"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ (oben links) beenden</span>
           </div>
-          <pre><code>import plotly.express as px
-import plotly.io as pio
-pio.renderers.default = "iframe"
+          <pre><code><span style="color:#0F05A0;font-weight:700">import</span> plotly.express <span style="color:#0F05A0;font-weight:700">as</span> px
+<span style="color:#0F05A0;font-weight:700">import</span> plotly.io <span style="color:#0F05A0;font-weight:700">as</span> pio
+pio.renderers.default = <span style="color:#a31515">"iframe"</span>
 
-df1 = df[df["Parameter"]=="PM10"]
-# 24h-Mittelwert; darf höchstens einmal pro Jahr überschritten werden
-grenzwert = 50
-fig = px.line(
+df1 = df[df[<span style="color:#a31515">"Parameter"</span>]==<span style="color:#a31515">"PM10"</span>]
+<span style="color:#6a9955"># 24h-Mittelwert; darf höchstens einmal pro Jahr überschritten werden</span>
+grenzwert = <span style="color:#098658">50</span>
+fig = px.<span style="color:#795e26">line</span>(
     df1,
-    x="Datum",
-    y="Wert",
-    facet_col="Parameter",
-    facet_row="Standort",
-    color="Einheit",
-    title="Tagesmittelwerte für Feinstaub (PM10)",
+    x=<span style="color:#a31515">"Datum"</span>,
+    y=<span style="color:#a31515">"Wert"</span>,
+    facet_col=<span style="color:#a31515">"Parameter"</span>,
+    facet_row=<span style="color:#a31515">"Standort"</span>,
+    color=<span style="color:#a31515">"Einheit"</span>,
+    title=<span style="color:#a31515">"Tagesmittelwerte für Feinstaub (PM10)"</span>,
 )
-fig.update_yaxes(matches=None)
-fig.update_layout(
-    height=1000,
-    width=1000
+fig.<span style="color:#795e26">update_yaxes</span>(matches=<span style="color:#0F05A0;font-weight:700">None</span>)
+fig.<span style="color:#795e26">update_layout</span>(
+    height=<span style="color:#098658">1000</span>,
+    width=<span style="color:#098658">1000</span>
 )
-fig.add_hline(
+fig.<span style="color:#795e26">add_hline</span>(
     y=grenzwert,
-    line_dash="dash",
-    line_color="red",
+    line_dash=<span style="color:#a31515">"dash"</span>,
+    line_color=<span style="color:#a31515">"red"</span>,
 )
-fig.show()</code></pre>
+fig.<span style="color:#795e26">show</span>()</code></pre>
         </div>
         <div id="luft-r" class="lang-panel">
           <div class="example-steps">
             <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01K7HKDF1S55RHSZPCK4SHTX1H/start?PACKAGE_ID=ugz_luftschadstoffmessung_tageswerte&RESOURCE_ID=75fbb34e-2dd1-4a4b-b992-53127c6820dd" target="_blank" rel="noopener">Notebook öffnen</a> &rarr;</span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">2</span> <strong>Run → Run all</strong></span>
+            <span class="step renku"><span class="step-num">2</span> <strong>Run → Run all</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">3</span> Code unten in neue Zelle einfügen, <strong>Ctrl+Enter</strong></span>
+            <span class="step renku"><span class="step-num">3</span> Code unten kopieren und in neue Zelle einfügen → <strong>Ctrl+Enter</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ oben links beenden</span>
+            <span class="step renku"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ (oben links) beenden</span>
           </div>
-          <pre><code># Daten filtern
+          <pre><code><span style="color:#6a9955"># Daten filtern</span>
 df1 &lt;- df %&gt;%
-  filter(Parameter == "PM10")
+  <span style="color:#795e26">filter</span>(Parameter == <span style="color:#a31515">"PM10"</span>)
 
-# Grenzwert
-grenzwert &lt;- 50
+<span style="color:#6a9955"># Grenzwert</span>
+grenzwert &lt;- <span style="color:#098658">50</span>
 
-# Plot
-ggplot(df1, aes(x = Datum, y = Wert, color = Einheit)) +
-  geom_line() +
-  scale_color_manual(values = "blue") +
-  facet_grid(Standort ~ Parameter, scales = "free_y") +
-  geom_hline(yintercept = grenzwert,
-             linetype = "dashed",
-             color = "red") +
-  labs(
-    title = "Tagesmittelwerte für Feinstaub (PM10)",
-    x = "Datum",
-    y = "Wert",
-    color = "Einheit"
+<span style="color:#6a9955"># Plot</span>
+<span style="color:#795e26">ggplot</span>(df1, <span style="color:#795e26">aes</span>(x = Datum, y = Wert, color = Einheit)) +
+  <span style="color:#795e26">geom_line</span>() +
+  <span style="color:#795e26">scale_color_manual</span>(values = <span style="color:#a31515">"blue"</span>) +
+  <span style="color:#795e26">facet_grid</span>(Standort ~ Parameter, scales = <span style="color:#a31515">"free_y"</span>) +
+  <span style="color:#795e26">geom_hline</span>(yintercept = grenzwert,
+             linetype = <span style="color:#a31515">"dashed"</span>,
+             color = <span style="color:#a31515">"red"</span>) +
+  <span style="color:#795e26">labs</span>(
+    title = <span style="color:#a31515">"Tagesmittelwerte für Feinstaub (PM10)"</span>,
+    x = <span style="color:#a31515">"Datum"</span>,
+    y = <span style="color:#a31515">"Wert"</span>,
+    color = <span style="color:#a31515">"Einheit"</span>
   ) +
-  theme_minimal()</code></pre>
+  <span style="color:#795e26">theme_minimal</span>()</code></pre>
         </div>
       </div>
 
@@ -489,72 +510,112 @@ ggplot(df1, aes(x = Datum, y = Wert, color = Einheit)) +
           <div class="example-steps">
             <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01KC1K2SN2GAQSGJ3NY602EA95/start?PACKAGE_ID=bev_vornamen_baby_od3700&RESOURCE_ID=7abf8562-4568-4c8c-8f1f-a842a5a54616" target="_blank" rel="noopener">Notebook öffnen</a></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step renku"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">3</span> Namen anpassen, Code einfügen, <strong>Ctrl+Enter</strong></span>
+            <span class="step renku"><span class="step-num">3</span> Code kopieren → in neue Zelle einfügen → Namen anpassen → <strong>Ctrl+Enter</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ oben links beenden</span>
+            <span class="step renku"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ (oben links) beenden</span>
           </div>
-          <pre><code># füge hier die Namen ein, die dich interessieren
-namen = ["Andrea", "Marco", "Alexander"]
+          <pre><code><span style="color:#6a9955"># füge hier die Namen ein, die dich interessieren</span>
+namen = [<span style="color:#a31515">"Andrea"</span>, <span style="color:#a31515">"Marco"</span>, <span style="color:#a31515">"Alexander"</span>]
 
 df_namen = (
-    df[df["Vorname"].isin(namen)]
-    .groupby(["StichtagDatJahr", "Vorname"])
-    .agg(Anzahl=("AnzGebuWir", "sum"))
-    .reset_index()
+    df[df[<span style="color:#a31515">"Vorname"</span>].<span style="color:#795e26">isin</span>(namen)]
+    .<span style="color:#795e26">groupby</span>([<span style="color:#a31515">"StichtagDatJahr"</span>, <span style="color:#a31515">"Vorname"</span>])
+    .<span style="color:#795e26">agg</span>(Anzahl=(<span style="color:#a31515">"AnzGebuWir"</span>, <span style="color:#a31515">"sum"</span>))
+    .<span style="color:#795e26">reset_index</span>()
 )
 
-fig, ax = plt.subplots(figsize=(10, 5))
-for name in namen:
-    subset = df_namen[df_namen["Vorname"] == name]
-    ax.plot(subset["StichtagDatJahr"], subset["Anzahl"], marker="o", label=name)
+fig, ax = plt.<span style="color:#795e26">subplots</span>(figsize=(<span style="color:#098658">10</span>, <span style="color:#098658">5</span>))
+<span style="color:#0F05A0;font-weight:700">for</span> name <span style="color:#0F05A0;font-weight:700">in</span> namen:
+    subset = df_namen[df_namen[<span style="color:#a31515">"Vorname"</span>] == name]
+    ax.<span style="color:#795e26">plot</span>(subset[<span style="color:#a31515">"StichtagDatJahr"</span>], subset[<span style="color:#a31515">"Anzahl"</span>], marker=<span style="color:#a31515">"o"</span>, label=name)
 
-ax.set_xlabel("Jahr")
-ax.set_ylabel("Anzahl Neugeborene")
-ax.set_title("Vornamen – Neugeborene in Zürich")
-ax.legend()
-plt.tight_layout()
-plt.show()</code></pre>
+ax.<span style="color:#795e26">set_xlabel</span>(<span style="color:#a31515">"Jahr"</span>)
+ax.<span style="color:#795e26">set_ylabel</span>(<span style="color:#a31515">"Anzahl Neugeborene"</span>)
+ax.<span style="color:#795e26">set_title</span>(<span style="color:#a31515">"Vornamen – Neugeborene in Zürich"</span>)
+ax.<span style="color:#795e26">legend</span>()
+plt.<span style="color:#795e26">tight_layout</span>()
+plt.<span style="color:#795e26">show</span>()</code></pre>
         </div>
         <div id="namen-r" class="lang-panel">
           <div class="example-steps">
             <span class="step"><span class="step-num">1</span> <a href="https://renkulab.io/p/opendatazurich/starter-code/sessions/01K7HKDF1S55RHSZPCK4SHTX1H/start?PACKAGE_ID=bev_vornamen_baby_od3700" target="_blank" rel="noopener">Notebook öffnen</a></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
+            <span class="step renku"><span class="step-num">2</span> <strong>Run → Run all cells</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">3</span> Namen anpassen, Code einfügen, <strong>Ctrl+Enter</strong></span>
+            <span class="step renku"><span class="step-num">3</span> Code kopieren → in neue Zelle einfügen → Namen anpassen → <strong>Ctrl+Enter</strong></span>
             <span class="step-arrow">&rarr;</span>
-            <span class="step"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ oben links beenden</span>
+            <span class="step renku"><span class="step-num">4</span> Nächstes Beispiel? Session via 🗑️ (oben links) beenden</span>
           </div>
-          <pre><code># füge hier die Namen ein, die dich interessieren
-namen &lt;- c("Andrea", "Marco", "Alexander")
+          <pre><code><span style="color:#6a9955"># füge hier die Namen ein, die dich interessieren</span>
+namen &lt;- <span style="color:#795e26">c</span>(<span style="color:#a31515">"Andrea"</span>, <span style="color:#a31515">"Marco"</span>, <span style="color:#a31515">"Alexander"</span>)
 
 df_namen &lt;- df %&gt;%
-    filter(Vorname %in% namen) %&gt;%
-    group_by(StichtagDatJahr, Vorname) %&gt;%
-    summarise(Anzahl = sum(AnzGebuWir), .groups = "drop")
+    <span style="color:#795e26">filter</span>(Vorname %in% namen) %&gt;%
+    <span style="color:#795e26">group_by</span>(StichtagDatJahr, Vorname) %&gt;%
+    <span style="color:#795e26">summarise</span>(Anzahl = <span style="color:#795e26">sum</span>(AnzGebuWir), .groups = <span style="color:#a31515">"drop"</span>)
 
-# Liniendiagramm erstellen
-ggplot(df_namen, aes(x = StichtagDatJahr, y = Anzahl, color = Vorname)) +
-    geom_line(size = 1) +
-    geom_point() +
-    labs(
-    title = "Vornamen – Neugeborene in Zürich",
-    x = "Jahr",
-    y = "Anzahl Neugeborene",
-    color = "Vorname"
+<span style="color:#6a9955"># Liniendiagramm erstellen</span>
+<span style="color:#795e26">ggplot</span>(df_namen, <span style="color:#795e26">aes</span>(x = StichtagDatJahr, y = Anzahl, color = Vorname)) +
+    <span style="color:#795e26">geom_line</span>(size = <span style="color:#098658">1</span>) +
+    <span style="color:#795e26">geom_point</span>() +
+    <span style="color:#795e26">labs</span>(
+    title = <span style="color:#a31515">"Vornamen – Neugeborene in Zürich"</span>,
+    x = <span style="color:#a31515">"Jahr"</span>,
+    y = <span style="color:#a31515">"Anzahl Neugeborene"</span>,
+    color = <span style="color:#a31515">"Vorname"</span>
     ) +
-    theme_minimal()</code></pre>
+    <span style="color:#795e26">theme_minimal</span>()</code></pre>
         </div>
       </div>
 
       <div class="example-block">
         <div class="example-header">
-          <h3>Fahrzeuge nach Antriebsart</h3>
+          <h3>SQL Workbench</h3>
           <p>Wie verbreitet sind Elektrofahrzeuge oder Benziner?</p>
         </div>
-        <a class="btn-link" href="https://sql-workbench.com/#config=%7B%22plugin%22%3A%22Y%20Area%22%2C%22plugin_config%22%3A%7B%7D%2C%22title%22%3A%22Data%22%2C%22group_by%22%3A%5B%22StichtagDatJahr%22%5D%2C%22split_by%22%3A%5B%22Treibstoffart2Lang%22%5D%2C%22columns%22%3A%5B%22AnzFahrzeuge%22%5D%2C%22columns_config%22%3A%7B%7D%2C%22filter%22%3A%5B%5D%2C%22sort%22%3A%5B%5D%2C%22expressions%22%3A%7B%7D%2C%22aggregates%22%3A%7B%7D%7D&queries=v0,CREATE-TABLE-metadata-AS-SELECT-*-FROM-read_json(%22https%3A%2F%2Fdata.stadt%20zuerich.ch%2Fapi%2Faction%2Fpackage_show%3Fid%3Dprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%22)~,CREATE-TABLE-ogdszh-AS-SELECT-*-FROM-read_csv(%22https%3A%2F%2Fcors.sqlqry.run%2F%3Furl%3Dhttps%3A%2F%2Fdata.stadt%20zuerich.ch%2Fdataset%2Fprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%2Fdownload%2FVER200OD2002.csv%22)~,SELECT-*-FROM-ogdszh~" target="_blank" rel="noopener">Interaktives Diagramm in SQL Workbench öffnen</a>
+        <div class="lang-panel active">
+          <div class="example-steps">
+            <span class="step"><span class="step-num">1</span> <a href="https://sql-workbench.com/#config=%7B%22plugin%22%3A%22Y%20Area%22%2C%22plugin_config%22%3A%7B%7D%2C%22title%22%3A%22Data%22%2C%22group_by%22%3A%5B%22StichtagDatJahr%22%5D%2C%22split_by%22%3A%5B%22Treibstoffart2Lang%22%5D%2C%22columns%22%3A%5B%22AnzFahrzeuge%22%5D%2C%22columns_config%22%3A%7B%7D%2C%22filter%22%3A%5B%5D%2C%22sort%22%3A%5B%5D%2C%22expressions%22%3A%7B%7D%2C%22aggregates%22%3A%7B%7D%7D&queries=v0,CREATE-TABLE-metadata-AS-SELECT-*-FROM-read_json(%22https%3A%2F%2Fdata.stadt%20zuerich.ch%2Fapi%2Faction%2Fpackage_show%3Fid%3Dprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%22)~,CREATE-TABLE-ogdszh-AS-SELECT-*-FROM-read_csv(%22https%3A%2F%2Fcors.sqlqry.run%2F%3Furl%3Dhttps%3A%2F%2Fdata.stadt%20zuerich.ch%2Fdataset%2Fprd_ssz_fz_pw_bestand_jahr_treibstoff_fahrzeugalter_od2002%2Fdownload%2FVER200OD2002.csv%22)~,SELECT-*-FROM-ogdszh~" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/SQL_Workbench-grey?style=flat&logo=DuckDB&logoSize=auto&labelColor=grey&color=grey" alt="SQL Workbench" title="SQL Workbench" style="height: 1.4em; vertical-align: middle;"></a> öffnen</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">2</span> Tabellenansicht: Reset-Button <svg style="width:1em;height:1em;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> oberhalb des Diagramms klicken</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">3</span> Eine neue Zeile anfangen</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">4</span> SQL-Code schreiben (<code>;</code> am Ende nicht vergessen)</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">5</span> Zum Ausführen <strong>Ctrl+Enter</strong></span>
+          </div>
+          <p style="margin: 0 0 0.75rem; font-size: 0.8rem; color: #666;">💡 <strong>Tipp:</strong> Falls statt einer Tabelle ein Diagramm angezeigt wird, klicken Sie auf den Reset-Button <svg style="width:0.9em;height:0.9em;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> oder wählen Sie Configure → Datagrid.</p>
+          <p style="margin: 0.75rem 0 0.4rem; font-size: 0.9rem; font-weight: 600;">Eigene SQL-Abfragen einbinden:</p>
+          <p class="query-question">Gibt es aktuell noch Autos, die über 100 Jahre alt und immer noch in Betrieb sind?</p>
+          <div class="example-steps">
+            <span class="step sqlwb"><span class="step-num">1</span> Code kopieren und in neue Zeile einfügen</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">2</span> <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code><span style="color:#0F05A0;font-weight:700">SELECT</span>
+  *
+<span style="color:#0F05A0;font-weight:700">FROM</span>
+  ogdszh
+<span style="color:#0F05A0;font-weight:700">WHERE</span>
+  StichtagDatJahr = <span style="color:#a31515">'2024'</span> <span style="color:#0F05A0;font-weight:700">AND</span>
+  AlterVFahrzeugNum > <span style="color:#098658">100</span>;</code></pre>
+          <p class="query-question">Wie alt ist das älteste Auto je Treibstoffart?</p>
+          <div class="example-steps">
+            <span class="step sqlwb"><span class="step-num">1</span> Code kopieren und in neue Zeile einfügen</span>
+            <span class="step-arrow">&rarr;</span>
+            <span class="step sqlwb"><span class="step-num">2</span> <strong>Ctrl+Enter</strong></span>
+          </div>
+          <pre><code><span style="color:#0F05A0;font-weight:700">SELECT</span>
+  Treibstoffart2Lang <span style="color:#0F05A0;font-weight:700">AS</span> Treibstoff,
+  <span style="color:#795e26">MAX</span>(AlterVFahrzeugNum) <span style="color:#0F05A0;font-weight:700">AS</span> hoechstes_Fahrzeugalter
+<span style="color:#0F05A0;font-weight:700">FROM</span>
+  ogdszh
+<span style="color:#0F05A0;font-weight:700">GROUP BY</span>
+  <span style="color:#0F05A0;font-weight:700">ALL</span>;</code></pre>
+        </div>
       </div>
 
     </details>
@@ -629,7 +690,7 @@ ggplot(df_namen, aes(x = StichtagDatJahr, y = Anzahl, color = Vorname)) +
       document.getElementById(panelId).classList.add('active');
     }
 
-    document.querySelectorAll('.lang-panel pre').forEach(function(pre) {
+    document.querySelectorAll('.lang-panel pre, .example-block pre').forEach(function(pre) {
       var btn = document.createElement('button');
       btn.className = 'copy-btn';
       btn.title = 'Code kopieren';

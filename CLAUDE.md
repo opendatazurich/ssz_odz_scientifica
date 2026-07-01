@@ -53,7 +53,7 @@ Scientifica/
 ├── mcp-abfragen/
 │   └── index.html                ← MCP-Server: Anleitung, Beispiele, Server-Details (fertig)
 └── anwendungen/
-    └── index.html                ← 7 OGD-Anwendungen als Bildkacheln (fertig)
+    └── index.html                ← 6 OGD-Anwendungen als Bildkacheln (fertig)
 ```
 
 ### Shared-Komponenten
@@ -105,11 +105,17 @@ Aufbau:
    - «Datenkatalog öffnen» (Link zu data.stadt-zuerich.ch)
    - Jeweils mit kurzer Beschreibung unter dem Button
 5. Beispielauswertungen (aufklappbar via `<details>`, standardmässig zugeklappt):
-   - **Luftqualität** — Python/R als Tabs, IDE-ähnliche Blöcke (helles Grau), nummerierte Schritt-Chips, Code in `<pre><code>`
+   - **Luftqualität** — Python/R als Tabs, IDE-ähnliche Blöcke (helles Grau), nummerierte Schritt-Chips, Code mit Syntax-Highlighting in `<pre><code>`
    - **Vornamensstatistik** — gleicher Aufbau, Namen anpassbar
-   - **Fahrzeuge nach Antriebsart** — direkter Link zur SQL Workbench (kein Code)
+   - **SQL Workbench** — Eigener Block mit shields.io DuckDB-Badge als Link, 5 Schritten (öffnen → Tabellenansicht → Zeile → SQL schreiben → Ctrl+Enter), Tipp-Hinweis, und 2 Beispiel-SQL-Abfragen mit Syntax-Highlighting und Schritt-Chips (kopieren → Ctrl+Enter)
    - Tab-Wechsel via `switchTab()` JS-Funktion (kein Framework)
-   - Schritte als horizontale Chips mit Züriblau-Nummernkreisen und Pfeil-Trennern
+   - Schritte als horizontale Chips mit farbigen Nummernkreisen:
+     - Blau (`var(--blue)`) — Schritt 1: Link öffnen (Renku/SQL Workbench)
+     - Grün (`#24b064`, `.renku`) — Schritte in RenkuLab
+     - Gelb (`#e6a817`, `.sqlwb`) — Schritte in SQL Workbench
+   - Alle Code-Snippets (Python, R, SQL) mit manuellem Syntax-Highlighting (Keywords blau/fett, Strings rot, Zahlen grün, Funktionen braun, Kommentare gedämpftes Grün)
+   - Fragestellungen einheitlich gestylt via `.query-question` (1rem, fett, kursiv)
+   - Copy-Button auf allen `<pre>`-Blöcken (`.lang-panel pre` und `.example-block pre`)
 6. Notebook-Inhalt: Python und R nebeneinander (Karten mit feinem grauem Border, Kategorie-Titel uppercase)
 7. Zielgruppen als Chips
 8. Technischer Hintergrund (RenkuLab, GitHub-Repo, 2'300+ Notebooks, SQL Workbench/DuckDB)
@@ -134,11 +140,11 @@ Aufbau:
 
 6 Kacheln mit Bildern von stadt-zuerich.ch, jeweils als Link zur Detailseite:
 1. Hanami Zürich (Kirschblüten-Karte)
-2. Wowoni (Mietpreis-Vergleich)
+2. OGD4All (ETH Zürich — Geodaten in natürlicher Sprache abfragen)
 3. Velounfallrisiko-Rechner
-4. OGD4All (ETH Zürich — Geodaten in natürlicher Sprache abfragen)
-5. Equal Street Names
-6. Zürich, wer bist Du? (ZHdK/NZZ)
+4. Equal Street Names
+5. Zürich, wer bist Du? (ZHdK/NZZ)
+6. Wowoni (Mietpreis-Vergleich)
 
 ### Technische Hinweise
 
