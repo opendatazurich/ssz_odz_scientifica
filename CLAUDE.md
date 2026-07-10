@@ -34,7 +34,7 @@ Besucher*innen erfahren kurz, was OGD ist und was die Stadt Zürich anbietet. Ha
 
 ```
 Scientifica/
-├── index.html                    ← Startseite / Übersicht aller 4 Workstations (2x2 Grid, viewport-füllend, mit Bild-Platzhaltern)
+├── index.html                    ← Startseite / Übersicht aller 4 Workstations (2x2 Grid, viewport-füllend, Platzhalter mit Brücke-Farbskala + Hexagon-Icons)
 ├── .gitignore                    ← Git-Ignore (Claude-Files, Windows, Editors)
 ├── CLAUDE.md
 ├── shared/
@@ -83,6 +83,16 @@ Alle Seiten nutzen `shared/style.css` und `shared/kiosk.js`. Jede Seite hat:
 
 Laptops am Event: **1920×1200 bei 150% Skalierung** (effektiv 1280×800 CSS-Pixel). Die Startseite ist darauf optimiert (viewport-füllend, kein Scrollen).
 
+### Startseite — Platzhalter-Kacheln
+
+Bis Bilder geliefert werden, haben die 4 Kacheln Gradient-Hintergründe mit SVG-Hexagon-Icons (skalierbar via `width:45%;height:45%`). Farbskala «Brücke» (Züriblau → Accent, dunkel nach hell):
+- Kachel 1 (Katalog): `#1a3a88` → `#2550a0` — Buch-Icon
+- Kachel 2 (Starter Code): `#2870b8` → `#3590cc` — Code-Icon `</>`
+- Kachel 3 (MCP): `#40a8d8` → `#55bce5` — Chat-Bubble-Icon
+- Kachel 4 (Anwendungen): `#70d0ec` → `#95e0f5` — Monitor-Icon
+
+Hexagone: `fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"`, Icons darin `stroke="rgba(255,255,255,0.85)"`. HTML-Kommentare `<!-- Bild hier einfügen -->` bleiben erhalten für spätere Bild-URLs.
+
 ### Katalog-Seite (fertig)
 
 Aufbau:
@@ -129,10 +139,16 @@ Aufbau:
 2. 4 Vorteile als Kacheln
 3. «MCP-Server einrichten» — Kurzanleitung in 4 Schritten, mit Untertitel «In 4 Schritten zum ersten Ergebnis»
 4. CTA: Jetzt selber ausprobieren (Link zu claude.ai)
-5. «Die MCP-Server im Detail» — 3 Server-Karten mit:
-   - Beschreibung mit Hyperlinks zu den jeweiligen Datenquellen (Open-Data-Katalog, Geodaten-Service, Parlamentsinformationen, Zürich Tourismus, OpenERZ, tecdottir, data.stadt-zuerich.ch, opendata.swiss, data.gov, data.europa.eu)
-   - Beispielabfragen als Chips direkt in den Karten (Label: «Beispielabfragen — klicken zum Ausprobieren»)
-   - Klick auf Chip öffnet `claude.ai/new?q=...` mit unsichtbarem Prefix «Verwende den [server-name] Server: ...» (JS liest Server-Name aus `h3` der Karte)
+5. «Die MCP-Server im Detail» — 3 Server-Karten mit SVG-Icons im Titel (Zürich-Wappen, Kreislauf-Pfeile, Weltkugel — alle in `var(--blue)`/weiss):
+   - **zurich-opendata-mcp** (23 Tools, 6 APIs): Open-Data-Katalog, Geodaten-Service, Parlamentsinformationen, Zürich Tourismus, Echtzeit-Parkplatzdaten sowie Wetter, Luftqualität und Fussgängerfrequenzen
+   - **metaodi-mcp-server** (10 Tools, 2 Datenquellen): Abfallsammeltermine (OpenERZ) und Wettermessdaten (tecdottir)
+   - **ckan-mcp-server** (rund 20 Tools): Universeller Server für ~950 CKAN-Portale weltweit (data.stadt-zuerich.ch, opendata.swiss, data.gov, data.europa.eu)
+   - 14 Beispielabfragen als Chips (5 / 5 / 4 pro Karte):
+     - **zurich-opendata-mcp**: Tesla/Porsche/Opel-Bestand, Hundefarben Top 5, Sozialhilfequoten, Temperatur vor einem Jahr, Freie Parkplätze
+     - **metaodi-mcp-server**: Recyclinghof PLZ 8055, Karton verpasst Folgetag, Kartonsammlungstermine Orte, Wassertemperatur Tiefenbrunnen (via hayal), Temperatur Mythenquai
+     - **ckan-mcp-server**: Baumkataster weltweit, Neueste Datensätze ZH/BS/SG, Bevölkerungsentwicklung ZH, Bildung opendata.swiss
+   - Klick auf Chip öffnet `claude.ai/new?q=...` mit Prefix «Verwende den [server-name] Server: ...» (JS liest Server-Name aus `h3` der Karte)
+   - Optionales `data-query`-Attribut auf Chips: wenn vorhanden, wird dieser Text statt des sichtbaren Chip-Texts als Prompt gesendet (erlaubt kurzen Anzeigetext mit ausführlicherem Prompt). 12 von 14 Chips nutzen `data-query` (z.B. Katalog-Suche statt Live-Tool, Ausgabeformat Tabelle/Diagramm/Karte, Zeiträume, Links zu Detailseiten). 2 einfache Chips senden den Anzeigetext direkt.
    - JS-basierte Höhenangleichung: `min-height` auf `.server-card p` und `.example-queries` für einheitliche Ausrichtung
    - Meta-Zeile (Entwicklung, Sprache, Lizenz) und GitHub-Link am Ende jeder Karte
 
