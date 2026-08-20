@@ -74,6 +74,23 @@
       text-decoration: underline;
     }
 
+    .server-url {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-family: monospace;
+      user-select: text;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #eee;
+    }
+
+    .server-url::before {
+      content: 'Remote MCP Server URL:\A';
+      white-space: pre-wrap;
+      font-family: var(--font);
+      font-weight: 600;
+    }
+
     .example-queries {
       display: flex;
       flex-wrap: wrap;
@@ -131,10 +148,10 @@
 
   <nav>
     <a href="../index.html">Übersicht</a>
-    <a href="../katalog/index.html">Daten finden</a>
-    <a href="../starter-code/index.html">Daten nutzen</a>
-    <a class="active" href="../mcp-abfragen/index.html">Daten abfragen</a>
     <a href="../anwendungen/index.html">Daten erleben</a>
+    <a href="../katalog/index.html">Daten finden</a>
+    <a class="active" href="../mcp-abfragen/index.html">Daten abfragen</a>
+    <a href="../starter-code/index.html">Daten nutzen</a>
   </nav>
 
   <header>
@@ -184,7 +201,7 @@
       <h3>In 4 Schritten zum ersten Ergebnis</h3>
       <ol>
         <li><strong>Claude.ai öffnen</strong> — Im Browser auf <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> gehen und anmelden.</li>
-        <li><strong>Konnektor hinzufügen</strong> — In den Einstellungen unter «Integrations» einen neuen MCP-Konnektor anlegen.</li>
+        <li><strong>Konnektor hinzufügen</strong> — In den Einstellungen unter «Konnektoren» einen neuen benutzerdefinierten MCP-Konnektor hinzufügen.</li>
         <li><strong>Server-URL einfügen</strong> — Die gehostete URL des gewünschten MCP-Servers eintragen (siehe unten).</li>
         <li><strong>Frage stellen</strong> — Im Chat eine Frage in natürlicher Sprache stellen — Claude greift automatisch auf die Daten zu.</li>
       </ol>
@@ -202,6 +219,7 @@
       <div class="server-card">
         <h3><svg style="width:1.2em;height:1.2em;vertical-align:-0.15em;margin-right:0.3em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="shield"><path d="M3 2h18v14a6 6 0 0 1-3 5.2L12 24l-6-2.8A6 6 0 0 1 3 16V2z"/></clipPath></defs><g clip-path="url(#shield)"><rect width="24" height="24" fill="#fff"/><polygon points="24,0 24,24 0,24" fill="var(--blue)"/></g><path d="M3 2h18v14a6 6 0 0 1-3 5.2L12 24l-6-2.8A6 6 0 0 1 3 16V2z" fill="none" stroke="var(--blue)" stroke-width="1.5"/></svg>zurich-opendata-mcp</h3>
           <p>Spezialisierter MCP-Server für die Stadt Zürich mit 23 Tools und 6 APIs: <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">Open-Data-Katalog</a>, <a href="https://www.ogd.stadt-zuerich.ch/wfs/geoportal/" target="_blank" rel="noopener">Geodaten-Service</a>, <a href="https://www.gemeinderat-zuerich.ch" target="_blank" rel="noopener">Parlamentsinformationen</a>, <a href="https://opendatazurich.github.io/zt-api/" target="_blank" rel="noopener">Zürich Tourismus</a>, Echtzeit-Parkplatzdaten sowie Wetter, Luftqualität und Fussgängerfrequenzen.</p>
+        <div class="server-url">https://zurich-opendata-mcp.liipgpt.ch/mcp</div>
         <div class="example-queries">
           <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query" data-query="Suche im OGD-Katalog der Stadt Zürich (data.stadt-zuerich.ch) nach dem Datensatz zum Personenwagenbestand nach Marke. Frage dann via Datastore-SQL die Bestände der Marken Tesla, Porsche und Opel seit 2002 ab. Gruppiere nach Jahr und Marke und summiere die Anzahl Fahrzeuge. Erstelle eine Liniengrafik mit einer Linie pro Marke.">Wie hat sich der Tesla-, Porsche- und Opelbestand seit 2002 entwickelt?</span>
@@ -216,6 +234,7 @@
       <div class="server-card">
         <h3><svg style="width:1.2em;height:1.2em;vertical-align:-0.15em;margin-right:0.3em" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>metaodi-mcp-server</h3>
           <p>MCP-Server mit 10 Tools für zwei Datenquellen der Stadt Zürich: <a href="https://openerz.metaodi.ch" target="_blank" rel="noopener">Abfallsammeltermine</a> (Karton, Papier, Grüngut u.a. nach Region und Datum) und <a href="https://tecdottir.metaodi.ch" target="_blank" rel="noopener">Wettermessdaten</a> (Temperatur, Niederschlag, Wassertemperatur an verschiedenen Stationen).</p>
+        <div class="server-url">https://mcp.metaodi.ch/mcp</div>
         <div class="example-queries">
           <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query" data-query="Suche über die Abfallsammeltermine (OpenERZ) nach den nächsten drei Terminen für den mobilen Recyclinghof in der Postleitzahl 8055. Zeige Datum, Uhrzeit und Standort.">Wann ist in der PLZ 8055 der nächste mobile Recyclinghof?</span>
@@ -230,6 +249,7 @@
       <div class="server-card">
         <h3><svg style="width:1.2em;height:1.2em;vertical-align:-0.15em;margin-right:0.3em" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>ckan-mcp-server</h3>
           <p>Universeller MCP-Server für rund 950 CKAN-Portale weltweit mit rund 20 Tools — darunter <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">data.stadt-zuerich.ch</a>, <a href="https://opendata.swiss" target="_blank" rel="noopener">opendata.swiss</a>, <a href="https://data.gov" target="_blank" rel="noopener">data.gov</a> und <a href="https://data.europa.eu" target="_blank" rel="noopener">data.europa.eu</a>. Unterstützt Datensatz-Suche, SQL-Abfragen, SPARQL und Portal-Erkennung.</p>
+        <div class="server-url">https://ckan-mcp-server.andy-pr.workers.dev/mcp</div>
         <div class="example-queries">
           <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query" data-query="Suche auf mehreren CKAN-Portalen nach Datensätzen zum Thema Baumkataster. Zeige die Treffer als Tabelle mit Titel, Stadt/Portal und Link zum Datensatz.">Zu welchen Städten gibt es Baumkataster als Open Data?</span>
