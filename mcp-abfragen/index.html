@@ -23,6 +23,10 @@
       flex-direction: column;
     }
 
+    .server-card.featured {
+      border-color: var(--blue);
+    }
+
     .server-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
@@ -216,7 +220,7 @@
     <h2 class="section-title">Die MCP-Server im Detail</h2>
 
     <div class="servers">
-      <div class="server-card">
+      <div class="server-card featured">
         <h3><svg style="width:1.2em;height:1.2em;vertical-align:-0.15em;margin-right:0.3em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="shield"><path d="M3 2h18v14a6 6 0 0 1-3 5.2L12 24l-6-2.8A6 6 0 0 1 3 16V2z"/></clipPath></defs><g clip-path="url(#shield)"><rect width="24" height="24" fill="#fff"/><polygon points="24,0 24,24 0,24" fill="var(--blue)"/></g><path d="M3 2h18v14a6 6 0 0 1-3 5.2L12 24l-6-2.8A6 6 0 0 1 3 16V2z" fill="none" stroke="var(--blue)" stroke-width="1.5"/></svg>zurich-opendata-mcp</h3>
           <p>Spezialisierter MCP-Server für die Stadt Zürich mit 23 Tools und 6 APIs: <a href="https://data.stadt-zuerich.ch" target="_blank" rel="noopener">Open-Data-Katalog</a>, <a href="https://www.ogd.stadt-zuerich.ch/wfs/geoportal/" target="_blank" rel="noopener">Geodaten-Service</a>, <a href="https://www.gemeinderat-zuerich.ch" target="_blank" rel="noopener">Parlamentsinformationen</a>, <a href="https://opendatazurich.github.io/zt-api/" target="_blank" rel="noopener">Zürich Tourismus</a>, Echtzeit-Parkplatzdaten sowie Wetter, Luftqualität und Fussgängerfrequenzen.</p>
         <div class="server-url" id="server-urls">https://zurich-opendata-mcp.liipgpt.ch/mcp</div>
@@ -226,7 +230,7 @@
           <span class="example-query" data-query="Suche auf data.stadt-zuerich.ch nach dem Datensatz zum Hundebestand. Frage via Datastore-SQL die aktuellste Jahresversion ab: Gruppiere nach Hundefarbe, zähle die Anzahl Hunde pro Farbe, schliesse 'unbestimmt' aus, sortiere absteigend und zeige nur die Top 5. Gib das Ergebnis als nummerierte Liste mit Farbe und Anzahl aus.">Welche 5 Farben sind im Hundebestand der Stadt Zürich am häufigsten?</span>
           <span class="example-query" data-query="Suche auf data.stadt-zuerich.ch nach dem Datensatz zur Sozialhilfequote nach Quartier. Frage via Datastore-SQL die Sozialhilfequoten der letzten 10 Jahre pro Quartier ab. Ermittle die 5 Quartiere mit der höchsten Quote im aktuellsten Jahr und zeige deren Verlauf über die letzten 10 Jahre als Tabelle und als interaktive Liniengrafik in einer lokalen HTML-Datei. Die Y-Achse soll bei 0 beginnen.">Welche Quartiere haben die höchsten Sozialhilfequoten?</span>
           <span class="example-query" data-query="Suche im OGD-Katalog nach historischen Wettermessdaten und zeige mir die Temperatur von vor einem Jahr in Zürich.">Wie war die Temperatur vor einem Jahr in Zürich?</span>
-          <span class="example-query" data-query="Wie viele freie Parkplätze gibt es gerade in der Zürcher Innenstadt? Zeige die Ergebnisse als Tabelle mit Parkhaus, freien Plätzen und Auslastung in Prozent.">Wie viele freie Parkplätze gibt es gerade in der Innenstadt?</span>
+          <span class="example-query" data-query="Suche auf data.stadt-zuerich.ch nach dem Datensatz zu den Verkehrszählungen (MIV). Frage via Datastore-SQL die Anzahl Fahrzeuge ab, die gestern über die Quaibrücke in Richtung Bellevue gefahren sind. Zeige das Ergebnis als Tabelle.">Wie viele Fahrzeuge fuhren gestern über die Quaibrücke Richtung Bellevue?</span>
         </div>
         <div class="server-meta">Entwicklung: Hayal Oezkan &middot; Python &middot; MIT-Lizenz</div>
         <a class="server-link" href="https://github.com/malkreide/zurich-opendata-mcp" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
@@ -238,11 +242,9 @@
         <div class="example-queries">
           <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
           <span class="example-query" data-query="Suche über die Abfallsammeltermine (OpenERZ) nach den nächsten drei Terminen für den mobilen Recyclinghof in der Postleitzahl 8055. Zeige Datum, Uhrzeit und Standort.">Wann ist in der PLZ 8055 der nächste mobile Recyclinghof?</span>
-          <span class="example-query" data-query="Suche über die Abfallsammeltermine (OpenERZ) den nächsten Kartonsammeltermin in der PLZ 8055. Suche dann den Folgetag dieses Termins und finde alle anderen Postleitzahlen, in denen an diesem Folgetag Karton gesammelt wird. Zeige beide Ergebnisse: den Termin in 8055 und die alternativen PLZ am Tag danach.">Karton in 8055 verpasst — wo ist am Folgetag Sammlung?</span>
-          <span class="example-query" data-query="Suche über die Abfallsammeltermine (OpenERZ) nach allen Orten bzw. Regionen, für die es Kartonsammeltermine gibt. Liste alle Orte auf.">Zu welchen Orten gibt es Infos zu Kartonsammlungsterminen?</span>
-          <span class="example-query" data-query="Frage die Echtzeit-Wetterdaten der Wasserschutzpolizei Zürich (Station Tiefenbrunnen) ab und zeige die aktuelle Wassertemperatur des letzten Eintrags.">Wie warm ist das Wasser gerade im Tiefenbrunnen?</span>
-          <span class="example-query">Wie warm ist es gerade am Mythenquai?</span>
-        </div>
+          <span class="example-query" data-query="Suche über die Abfallsammeltermine (OpenERZ) den nächsten Kartonsammeltermin in der PLZ 8055. Suche dann den Folgetag dieses Termins und finde alle anderen Postleitzahlen, in denen an diesem Folgetag Karton gesammelt wird. Zeige beide Ergebnisse: den Termin in 8055 und die alternativen PLZ am Tag danach.">Wo wird am Folgetag Karton gesammelt, wenn ich die Sammlung in 8055 verpasst habe?</span>
+          <span class="example-query" data-query="Frage die Wettermessdaten der Station Mythenquai ab und zeige den Pegelstand des Zürichsees zum heutigen Datum der letzten vier Jahre im Vergleich. Zeige das Ergebnis als Tabelle mit Datum und Pegelstand.">Wie hoch ist der Pegelstand des Zürichsees heute im Vergleich zu den letzten 4 Jahren?</span>
+          <span class="example-query" data-query="Frage die Wettermessdaten der Station Tiefenbrunnen ab und zeige die Wassertemperatur des Zürichsees zum heutigen Datum der letzten vier Jahre im Vergleich. Zeige das Ergebnis als Tabelle mit Datum und Wassertemperatur.">Wie warm ist das Wasser im Tiefenbrunnen heute im Vergleich zu den letzten 4 Jahren?</span>        </div>
         <div class="server-meta">Entwicklung: Stefan Oderbolz &middot; Python &middot; Docker</div>
         <a class="server-link" href="https://github.com/metaodi/metaodi-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
       </div>
@@ -252,11 +254,10 @@
         <div class="server-url">https://ckan-mcp-server.andy-pr.workers.dev/mcp</div>
         <div class="example-queries">
           <span class="queries-label">Beispielabfragen — klicken zum Ausprobieren</span>
-          <span class="example-query" data-query="Suche auf mehreren CKAN-Portalen nach Datensätzen zum Thema Baumkataster. Zeige die Treffer als Tabelle mit Titel, Stadt/Portal und Link zum Datensatz.">Zu welchen Städten gibt es Baumkataster als Open Data?</span>
-          <span class="example-query" data-query="Zeige die jeweils 5 neuesten Datensätze auf den CKAN-Portalen von Zürich (data.stadt-zuerich.ch), Basel (data.bs.ch) und St. Gallen (daten.stadt.sg.ch). Erstelle pro Stadt eine Tabelle mit Titel, Veröffentlichungsdatum und Link zum Datensatz.">Was sind die neuesten Datensätze in Zürich, Basel und St. Gallen?</span>
-          <span class="example-query" data-query="Suche Datensätze zur Bevölkerungsentwicklung auf data.stadt-zuerich.ch. Zeige die Treffer als Tabelle mit Titel, Beschreibung und Link zum Datensatz.">Suche Datensätze zur Bevölkerungsentwicklung in der Stadt Zürich.</span>
-          <span class="example-query" data-query="Suche auf opendata.swiss nach offenen Datensätzen zum Thema Bildung. Zeige die Treffer als Tabelle mit Titel, Organisation und Link zum Datensatz.">Welche offenen Datensätze gibt es zu Bildung auf opendata.swiss?</span>
-        </div>
+          <span class="example-query" data-query="Vergleiche die CKAN-Portale von Zürich (data.stadt-zuerich.ch), Barcelona (opendata-ajuntament.barcelona.cat) und Berlin (daten.berlin.de). Wie viele offene Datensätze hat jedes Portal? Zeige das Ergebnis als Tabelle mit Stadt, Portal-URL und Anzahl Datensätze.">Wie viele offene Datensätze haben Zürich, Barcelona und Berlin auf ihren Portalen?</span>
+          <span class="example-query" data-query="Suche auf CKAN-Portalen in der Schweiz und in den Nachbarländern (Deutschland, Österreich, Frankreich, Italien) nach Datensätzen zum Thema Baumkataster. Zeige die Treffer als Tabelle mit Titel, Stadt/Land, Portal und Link zum Datensatz.">Zu welchen Schweizer Städten gibt es ein Baumkataster als Open Data — und wie sieht es in den Nachbarländern aus?</span>
+          <span class="example-query" data-query="Suche auf opendata.swiss nach den jeweils 5 neuesten Datensätzen der Städte Zürich, Basel und St. Gallen. Erstelle pro Stadt eine Tabelle mit Titel, Veröffentlichungsdatum und Link zum Datensatz.">Was sind die neuesten Datensätze von Zürich, Basel und St. Gallen auf opendata.swiss?</span>
+          <span class="example-query" data-query="Suche Datensätze zur Bevölkerungsentwicklung auf data.stadt-zuerich.ch. Zeige die Treffer als Tabelle mit Titel, Beschreibung und Link zum Datensatz.">Suche Datensätze zur Bevölkerungsentwicklung in der Stadt Zürich.</span>        </div>
         <div class="server-meta">Entwicklung: onData (Italien) &middot; TypeScript &middot; MIT-Lizenz</div>
         <a class="server-link" href="https://github.com/ondata/ckan-mcp-server" target="_blank" rel="noopener">GitHub-Repository &rarr;</a>
       </div>
